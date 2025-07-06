@@ -1,0 +1,2595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solid SaaS Boilerplate Clone</title>
+    <script src="https://cdn.tailwindcss.com"></script>"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+              primary: "#006bff",
+              primaryho: "#0053cc",
+              titlebg: "#d1eaff",
+              titlebgdark: "#2c3e50",
+              btndark: "#1a1a1a",
+              waterloo: "#7f8c8d",
+              "dark-bg": "#000000",
+            },
+            spacing: {
+              2.5: "10px",
+              4.5: "18px",
+              5.5: "22px",
+              7.5: "30px",
+              25: "100px",
+              35: "140px",
+              40: "160px",
+              46: "184px",
+              1390: "1390px",
+            },
+            fontSize: {
+              hero: "56px",
+              regular: "16px",
+            },
+            zIndex: {
+              999: "999",
+              9999: "9999",
+              99999: "99999",
+            },
+            maxWidth: {
+              "c-1390": "1390px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    
+
+    </style>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <link
+      rel="stylesheet"
+      href="/_next/static/css/79e5ba8e53f2830e.css"
+      crossorigin=""
+      data-precedence="next"
+    />
+    <link
+      rel="stylesheet"
+      href="/_next/static/css/f49f726184d960b3.css"
+      crossorigin=""
+      data-precedence="next"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/styleplus.css" />
+  </head>
+  <body class="dark:bg-black __className_e66fe9">
+        <style>
+            #nprogress {
+                pointer-events: none
+            }
+
+            #nprogress .bar {
+                background: #006BFF;
+                position: fixed;
+                z-index: 1600;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 3px
+            }
+
+            #nprogress .peg {
+                display: block;
+                position: absolute;
+                right: 0;
+                width: 100px;
+                height: 100%;
+                box-shadow: none;
+                opacity: 1;
+                -webkit-transform: rotate(3deg) translate(0px,-4px);
+                -ms-transform: rotate(3deg) translate(0px,-4px);
+                transform: rotate(3deg) translate(0px,-4px)
+            }
+
+            #nprogress .spinner {
+                display: block;
+                position: fixed;
+                z-index: 1600;
+                top: 15px;
+                right: 15px
+            }
+
+            #nprogress .spinner-icon {
+                width: 18px;
+                height: 18px;
+                box-sizing: border-box;
+                border: 2px solid transparent;
+                border-top-color: #006BFF;
+                border-left-color: #006BFF;
+                border-radius: 50%;
+                -webkit-animation: nprogress-spinner 400ms linear infinite;
+                animation: nprogress-spinner 400ms linear infinite
+            }
+
+            .nprogress-custom-parent {
+                overflow: hidden;
+                position: relative
+            }
+
+            .nprogress-custom-parent #nprogress .bar,.nprogress-custom-parent #nprogress .spinner {
+                position: absolute
+            }
+
+            @-webkit-keyframes nprogress-spinner {
+                0% {
+                    -webkit-transform: rotate(0deg)
+                }
+
+                100% {
+                    -webkit-transform: rotate(360deg)
+                }
+            }
+
+            @keyframes nprogress-spinner {
+                0% {
+                    transform: rotate(0deg)
+                }
+
+                100% {
+                    transform: rotate(360deg)
+                }
+            }
+        </style>
+        <script>
+            !function() {
+                try {
+                    var d = document.documentElement
+                      , c = d.classList;
+                    c.remove('light', 'dark');
+                    var e = localStorage.getItem('theme');
+                    if (e) {
+                        c.add(e || '')
+                    } else {
+                        c.add('light');
+                    }
+                    if (e === 'light' || e === 'dark' || !e)
+                        d.style.colorScheme = e || 'light'
+                } catch (t) {}
+            }();
+        </script>
+          <header class="fixed left-0 top-0 z-999 w-full py-7 ">
+            <div class="relative mx-auto max-w-c-1390 items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
+                <div class="flex w-full items-center justify-between xl:w-1/4">
+          <a href="/">
+            <img
+              src="https://solid.nextjstemplates.com/images/logo/logo-light.svg"
+              alt="logo"
+              class="hidden dark:block w-full"
+            />
+            <img
+              src="https://solid.nextjstemplates.com/images/logo/logo-light.svg"
+              alt="logo"
+              class="dark:hidden w-full"
+            />
+          </a>
+          <button class="block xl:hidden" aria-label="menu toggle">
+            <span class="block w-5.5 h-5.5 relative">
+              <span class="absolute inset-0">
+                <span
+                  class="block h-0.5 bg-black dark:bg-white my-1 w-full"
+                ></span>
+                <span
+                  class="block h-0.5 bg-black dark:bg-white my-1 w-full"
+                ></span>
+                <span
+                  class="block h-0.5 bg-black dark:bg-white my-1 w-full"
+                ></span>
+              </span>
+            </span>
+          </button>
+        </div>
+        <div class="hidden xl:flex w-full items-center justify-between">
+          <nav>
+            <ul
+              class="flex flex-col xl:flex-row gap-5 xl:gap-10 xl:items-center"
+            >
+              <li><a href="#" class="text-primary">Home</a></li>
+              <li>
+                <a href="#features" class="hover:text-primary">Features</a>
+              </li>
+              <li><a href="/blog" class="hover:text-primary">Blog</a></li>
+              <li><a href="/docs" class="hover:text-primary">Docs</a></li>
+              <li class="relative group">
+                <button class="flex items-center gap-1 hover:text-primary">
+                  Pages
+                  <svg
+                    class="w-3 h-3 fill-waterloo group-hover:fill-primary"
+                    viewBox="0 0 512 512"
+                  >
+                    <path
+                      d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+                    ></path>
+                  </svg>
+                </button>
+                <ul class="dropdown">
+                  <li>
+                    <a href="/blog" class="block px-4 py-2 hover:text-primary"
+                      >Blog Grid</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/auth/signin"
+                      class="block px-4 py-2 hover:text-primary"
+                      >Sign In</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/auth/signup"
+                      class="block px-4 py-2 hover:text-primary"
+                      >Sign Up</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/docs" class="block px-4 py-2 hover:text-primary"
+                      >Docs</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="/support"
+                      class="block px-4 py-2 hover:text-primary"
+                      >Support</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/error" class="block px-4 py-2 hover:text-primary"
+                      >404</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li><a href="/support" class="hover:text-primary">Support</a></li>
+            </ul>
+          </nav>
+          <div class="ml-auto flex gap-6 items-center">
+            <button
+              class="hidden sm:flex w-[38px] h-[38px] rounded-full bg-white dark:bg-black items-center justify-center text-waterloo"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 18 18"
+                fill="currentColor"
+              >
+                <path
+                  d="M16.93 15.4L12.48 11.78C14.32 9.27 14.13 5.68 11.83 3.41C10.62 2.2 9 1.52 7.27 1.52C5.54 1.52 3.93 2.2 2.71 3.41C0.2 5.92 0.2 10.03 2.71 12.54C3.93 13.75 5.54 14.42 7.27 14.42C8.92 14.42 10.46 13.8 11.67 12.7L16.18 16.34C16.29 16.42 16.42 16.48 16.56 16.48C16.75 16.48 16.91 16.39 17.02 16.26C17.23 15.99 17.2 15.61 16.93 15.4Z"
+                />
+              </svg>
+            </button>
+            <button
+              class="relative w-[38px] h-[38px] rounded-full bg-gray-2 dark:bg-dark-bg text-black dark:text-white"
+            >
+              <img
+                src="https://solid.nextjstemplates.com/images/icon/icon-moon.svg"
+                class="dark:hidden"
+                alt="moon"
+              />
+              <img
+                src="/images/icon/icon-sun.svg"
+                class="hidden dark:block"
+                alt="sun"
+              />
+            </button>
+            <a
+              href="/auth/signin"
+              class="text-regular font-medium text-waterloo hover:text-primary"
+              >Sign In</a
+            >
+            <a
+              href="/auth/signup"
+              class="px-7.5 py-2.5 bg-primary text-white rounded-full hover:bg-primaryho duration-300"
+              >Sign Up</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+      <section class="pt-40 md:pt-40 xl:pt-46 pb-20 xl:pb-25 overflow-hidden">
+        <div class="max-w-c-1390 mx-auto px-4 md:px-8 2xl:px-0">
+          <div
+            class="flex flex-col lg:flex-row lg:items-center lg:gap-8 xl:gap-32.5"
+          >
+            <div class="md:w-1/2">
+              <h4 class="mb-4.5 text-lg font-medium text-black dark:text-white">
+                🔥 Solid - A Complete SaaS Starter Template for SaaS
+              </h4>
+              <h1
+                class="mb-5 pr-16 text-3xl font-bold text-black dark:text-white xl:text-hero"
+              >
+                Robust SaaS Boilerplate and Starter for
+                <span
+                  class="relative ml-2.5 inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg dark:before:bg-titlebgdark"
+                >
+                  Next.js
+                </span>
+              </h1>
+              <p class="text-waterloo">
+                Packed with all the key integrations you need for swift SaaS
+                startup launch, including - Authentication, Database, Sanity
+                Blog, Essential UI Components, Business Pages and More. Built
+                with - Next.js, React 18 and TypeScript.
+              </p>
+              <div class="mt-10">
+                <a
+                  href="/auth/signup"
+                  class="inline-block px-7.5 py-2.5 bg-black text-white rounded-full hover:bg-blackho dark:bg-btndark dark:hover:bg-blackho duration-300"
+                >
+                  Get Started
+                </a>
+              </div>
+            </div>
+            <div class="hidden md:block md:w-1/2 animate_right">
+              <!-- Placeholder image -->
+              <img
+                src="https://solid.nextjstemplates.com/images/hero/hero-light.svg"
+                alt="Hero Graphic"
+                class="w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <section class="border border-x-0 border-y-stroke bg-alabaster py-11 dark:border-y-strokedark dark:bg-black">
+  <div class="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
+    <div class="grid grid-cols-3 items-center justify-center gap-7.5 md:grid-cols-6 lg:gap-12.5 xl:gap-29">
+                  <!-- Logo item -->
+                  <a href="#" class="relative block h-10 w-[98px]">
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-light-01.svg"
+                      alt="Client"
+                      class="dark:hidden opacity-65 hover:opacity-100 transition-all duration-300"
+                    />
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-dark-01.svg"
+                      alt="Client"
+                      class="hidden dark:block opacity-50 hover:opacity-100 transition-all duration-300"
+                    />
+                  </a>
+                  <a href="#" class="relative block h-10 w-[98px]">
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-light-02.svg"
+                      alt="Client"
+                      class="dark:hidden opacity-65 hover:opacity-100 transition-all duration-300"
+                    />
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-dark-02.svg"
+                      alt="Client"
+                      class="hidden dark:block opacity-50 hover:opacity-100 transition-all duration-300"
+                    />
+                  </a>
+                  <a href="#" class="relative block h-10 w-[98px]">
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-light-03.svg"
+                      alt="Client"
+                      class="dark:hidden opacity-65 hover:opacity-100 transition-all duration-300"
+                    />
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-dark-03.svg"
+                      alt="Client"
+                      class="hidden dark:block opacity-50 hover:opacity-100 transition-all duration-300"
+                    />
+                  </a>
+                  <a href="#" class="relative block h-10 w-[98px]">
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-light-04.svg"
+                      alt="Client"
+                      class="dark:hidden opacity-65 hover:opacity-100 transition-all duration-300"
+                    />
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-dark-04.svg"
+                      alt="Client"
+                      class="hidden dark:block opacity-50 hover:opacity-100 transition-all duration-300"
+                    />
+                  </a>
+                  <a href="#" class="relative block h-10 w-[98px]">
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-light-05.svg"
+                      alt="Client"
+                      class="dark:hidden opacity-65 hover:opacity-100 transition-all duration-300"
+                    />
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-dark-05.svg"
+                      alt="Client"
+                      class="hidden dark:block opacity-50 hover:opacity-100 transition-all duration-300"
+                    />
+                  </a>
+                  <a href="#" class="relative block h-10 w-[98px]">
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-light-06.svg"
+                      alt="Client"
+                      class="dark:hidden opacity-65 hover:opacity-100 transition-all duration-300"
+                    />
+                    <img
+                      src="https://solid.nextjstemplates.com/images/brand/brand-light-06.svg"
+                      alt="Client"
+                      class="hidden dark:block opacity-50 hover:opacity-100 transition-all duration-300"
+                    />
+                  </a>
+                </div>
+              </div>
+            </section>
+            <section id="features" class="py-20 lg:py-25 xl:py-30">
+              <div class="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
+                <!-- Section Title -->
+                <div class="text-center">
+                  <div
+                    class="mb-4 inline-block rounded-full bg-zumthor px-4.5 py-1.5 dark:border dark:border-strokedark dark:bg-blacksection"
+                  >
+                    <span
+                      class="text-sectiontitle font-medium text-black dark:text-white"
+                      >SOLID FEATURES</span
+                    >
+                  </div>
+                  <h2
+                    class="mx-auto mb-4 text-3xl font-bold text-black dark:text-white md:w-4/5 xl:w-1/2 xl:text-sectiontitle3"
+                  >
+                    Core Features of Solid
+                  </h2>
+                  <p
+                    class="mx-auto text-base text-body md:w-4/5 lg:w-3/5 xl:w-[46%]"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                    convallis tortor eros. Donec vitae tortor lacus. Phasellus
+                    aliquam ante in maximus.
+                  </p>
+                </div>
+
+                <!-- Feature Cards -->
+                <div
+                  class="mt-12.5 grid grid-cols-1 gap-7.5 md:grid-cols-2 lg:mt-15 lg:grid-cols-3 xl:mt-20 xl:gap-12.5"
+                >
+                  <!-- Card -->
+                  <div
+                    class="rounded-lg border border-white bg-white p-7.5 shadow-solid-3 transition-all hover:shadow-solid-4 dark:border-strokedark dark:bg-blacksection dark:hover:bg-hoverdark xl:p-12.5"
+                  >
+                    <div
+                      class="flex h-16 w-16 items-center justify-center rounded-[4px] bg-primary"
+                    >
+                      <img
+                        src="https://solid.nextjstemplates.com/images/icon/icon-01.svg"
+                        alt="Crafted for SaaS"
+                        width="36"
+                        height="36"
+                      />
+                    </div>
+                    <h3
+                      class="mb-5 mt-7.5 text-xl font-semibold text-black dark:text-white xl:text-itemtitle"
+                    >
+                      Crafted for SaaS
+                    </h3>
+                    <p class="text-body">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      In convallis tortor.
+                    </p>
+                  </div>
+
+                  <div
+                    class="rounded-lg border border-white bg-white p-7.5 shadow-solid-3 transition-all hover:shadow-solid-4 dark:border-strokedark dark:bg-blacksection dark:hover:bg-hoverdark xl:p-12.5"
+                  >
+                    <div
+                      class="flex h-16 w-16 items-center justify-center rounded-[4px] bg-primary"
+                    >
+                      <img
+                        src="https://solid.nextjstemplates.com/images/icon/icon-02.svg"
+                        alt="High-quality Design"
+                        width="36"
+                        height="36"
+                      />
+                    </div>
+                    <h3
+                      class="mb-5 mt-7.5 text-xl font-semibold text-black dark:text-white xl:text-itemtitle"
+                    >
+                      High-quality Design
+                    </h3>
+                    <p class="text-body">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      In convallis tortor.
+                    </p>
+                  </div>
+
+                  <div
+                    class="rounded-lg border border-white bg-white p-7.5 shadow-solid-3 transition-all hover:shadow-solid-4 dark:border-strokedark dark:bg-blacksection dark:hover:bg-hoverdark xl:p-12.5"
+                  >
+                    <div
+                      class="flex h-16 w-16 items-center justify-center rounded-[4px] bg-primary"
+                    >
+                      <img
+                        src="https://solid.nextjstemplates.com/images/icon/icon-03.svg"
+                        alt="Next.js + TypeScript"
+                        width="36"
+                        height="36"
+                      />
+                    </div>
+                    <h3
+                      class="mb-5 mt-7.5 text-xl font-semibold text-black dark:text-white xl:text-itemtitle"
+                    >
+                      Next.js + TypeScript
+                    </h3>
+                    <p class="text-body">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      In convallis tortor.
+                    </p>
+                  </div>
+
+                  <div
+                    class="rounded-lg border border-white bg-white p-7.5 shadow-solid-3 transition-all hover:shadow-solid-4 dark:border-strokedark dark:bg-blacksection dark:hover:bg-hoverdark xl:p-12.5"
+                  >
+                    <div
+                      class="flex h-16 w-16 items-center justify-center rounded-[4px] bg-primary"
+                    >
+                      <img
+                        src="https://solid.nextjstemplates.com/images/icon/icon-04.svg"
+                        alt="Sanity Blog and Docs"
+                        width="36"
+                        height="36"
+                      />
+                    </div>
+                    <h3
+                      class="mb-5 mt-7.5 text-xl font-semibold text-black dark:text-white xl:text-itemtitle"
+                    >
+                      Sanity Blog and Docs
+                    </h3>
+                    <p class="text-body">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      In convallis tortor.
+                    </p>
+                  </div>
+
+                  <div
+                    class="rounded-lg border border-white bg-white p-7.5 shadow-solid-3 transition-all hover:shadow-solid-4 dark:border-strokedark dark:bg-blacksection dark:hover:bg-hoverdark xl:p-12.5"
+                  >
+                    <div
+                      class="flex h-16 w-16 items-center justify-center rounded-[4px] bg-primary"
+                    >
+                      <img
+                        src="https://solid.nextjstemplates.com/images/icon/icon-05.svg"
+                        alt="DB, Auth and Stripe"
+                        width="36"
+                        height="36"
+                      />
+                    </div>
+                    <h3
+                      class="mb-5 mt-7.5 text-xl font-semibold text-black dark:text-white xl:text-itemtitle"
+                    >
+                      DB, Auth and Stripe
+                    </h3>
+                    <p class="text-body">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      In convallis tortor.
+                    </p>
+                  </div>
+
+                  <div
+                    class="rounded-lg border border-white bg-white p-7.5 shadow-solid-3 transition-all hover:shadow-solid-4 dark:border-strokedark dark:bg-blacksection dark:hover:bg-hoverdark xl:p-12.5"
+                  >
+                    <div
+                      class="flex h-16 w-16 items-center justify-center rounded-[4px] bg-primary"
+                    >
+                      <img
+                        src="https://solid.nextjstemplates.com/images/icon/icon-06.svg"
+                        alt="Regular Free Updates"
+                        width="36"
+                        height="36"
+                      />
+                    </div>
+                    <h3
+                      class="mb-5 mt-7.5 text-xl font-semibold text-black dark:text-white xl:text-itemtitle"
+                    >
+                      Regular Free Updates
+                    </h3>
+                    <p class="text-body">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      In convallis tortor.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
+              <div class="mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">
+                <div
+                  class="flex flex-col-reverse md:flex-row items-center gap-8 lg:gap-32.5"
+                >
+                  <!-- Image Left -->
+                  <div
+                    class="animate_left relative mx-auto hidden md:block aspect-[588/526.5] w-full md:w-1/2"
+                  >
+                    <img
+                      alt="About"
+                      loading="lazy"
+                      decoding="async"
+                      class="absolute inset-0 w-full h-full object-contain dark:hidden"
+                      src="https://solid.nextjstemplates.com/_next/image?url=%2Fimages%2Fabout%2Fabout-light-01.png&w=3840&q=75"
+                    />
+                    <img
+                      alt="About"
+                      loading="lazy"
+                      decoding="async"
+                      class="absolute inset-0 w-full h-full object-contain hidden dark:block"
+                      src="https://solid.nextjstemplates.com/_next/image?url=%2Fimages%2Fabout%2Fabout-dark-01.png&w=3840&q=75"
+                    />
+                  </div>
+
+                  <!-- Content Right -->
+                  <div class="animate_right w-full md:w-1/2">
+                    <h4
+                      class="font-medium uppercase text-black dark:text-white"
+                    >
+                      <span
+                        class="mb-4 mr-4 inline-flex rounded-full bg-meta px-4.5 py-1 text-metatitle uppercase text-white"
+                      >
+                        New
+                      </span>
+                      SaaS Boilerplate for Next.js
+                    </h4>
+                    <h2
+                      class="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero"
+                    >
+                      A Complete Solution for
+                      <span
+                        class="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg dark:before:bg-titlebgdark"
+                      >
+                        SaaS Startup
+                      </span>
+                    </h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Ut ultricies lacus non fermentum ultrices. Fusce
+                      consectetur le.
+                    </p>
+
+                    <!-- Feature Item 1 -->
+                    <div class="mt-7.5 flex items-start gap-5">
+                      <div
+                        class="flex h-15 w-15 items-center justify-center rounded-full border border-stroke dark:border-strokedark dark:bg-blacksection"
+                      >
+                        <p
+                          class="text-metatitle2 font-semibold text-black dark:text-white"
+                        >
+                          01
+                        </p>
+                      </div>
+                      <div class="w-3/4">
+                        <h3
+                          class="mb-0.5 text-metatitle2 text-black dark:text-white"
+                        >
+                          Mailchimp for Newsletter Emails + SMTP for
+                          Transactional Emails
+                        </h3>
+                        <p>Ut ultricies lacus non fermentum ultrices.</p>
+                      </div>
+                    </div>
+
+                    <!-- Feature Item 2 -->
+                    <div class="mt-7.5 flex items-start gap-5">
+                      <div
+                        class="flex h-15 w-15 items-center justify-center rounded-full border border-stroke dark:border-strokedark dark:bg-blacksection"
+                      >
+                        <p
+                          class="text-metatitle2 font-semibold text-black dark:text-white"
+                        >
+                          02
+                        </p>
+                      </div>
+                      <div class="w-3/4">
+                        <h3
+                          class="mb-0.5 text-metatitle2 text-black dark:text-white"
+                        >
+                          Algolia Integration for Site Search
+                        </h3>
+                        <p>Consectetur adipiscing elit fermentum ultricies.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 2 -->
+            <section>
+              <div
+                class="mx-auto max-w-c-1235 overflow-hidden px-4 md:px-8 2xl:px-0"
+              >
+                <div
+                  class="flex flex-col md:flex-row items-center gap-8 lg:gap-32.5"
+                >
+                  <!-- Text Left -->
+                  <div class="animate_left w-full md:w-1/2">
+                    <h4
+                      class="font-medium uppercase text-black dark:text-white"
+                    >
+                      Launch Your SaaS Fast
+                    </h4>
+                    <h2
+                      class="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero"
+                    >
+                      Packed with All Essential
+                      <span
+                        class="relative ml-2.5 inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg2 dark:before:bg-titlebgdark"
+                      >
+                        Integrations
+                      </span>
+                    </h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Ut ultricies lacus non fermentum ultrices. Fusce
+                      consectetur le.
+                    </p>
+                    <div>
+                      <a
+                        href="#"
+                        class="group mt-7.5 inline-flex items-center gap-2.5 text-black hover:text-primary dark:text-white dark:hover:text-primary"
+                      >
+                        <span class="duration-300 group-hover:pr-2"
+                          >Know More</span
+                        >
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 14 14"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M10.4766 6.16664L6.00658 1.69664L7.18492 0.518311L13.6666 6.99998L7.18492 13.4816L6.00658 12.3033L10.4766 7.83331H0.333252V6.16664H10.4766Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <!-- Image Right -->
+                  <div
+                    class="animate_right relative mx-auto hidden md:block aspect-[588/526.5] w-full md:w-1/2"
+                  >
+                    <img
+                      alt="About"
+                      loading="lazy"
+                      decoding="async"
+                      class="absolute inset-0 w-full h-full object-contain dark:hidden"
+                      src="https://solid.nextjstemplates.com/images/about/about-light-02.svg"
+                    />
+                    <img
+                      alt="About"
+                      loading="lazy"
+                      decoding="async"
+                      class="absolute inset-0 w-full h-full object-contain hidden dark:block"
+                      src="https://solid.nextjstemplates.com/images/about/about-dark-02.svg"
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Section 3 -->
+            <section class="relative pb-20 pt-18.5 lg:pb-22.5">
+              <div class="relative mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
+               
+
+                <!-- Feature Tabs -->
+                <div
+                  class="animate_top mb-15 flex flex-wrap justify-center rounded-[10px] border border-stroke bg-white shadow-solid-5 dark:border-strokedark dark:bg-blacksection dark:shadow-solid-6 md:flex-nowrap md:items-center lg:gap-7.5 xl:mb-21.5 xl:gap-12.5"
+                >
+                  <!-- Item 1 -->
+                  <div
+                    class="relative flex w-full cursor-pointer items-center gap-4 border-b border-stroke px-6 py-2 last:border-0 dark:border-strokedark md:w-auto md:border-0 xl:px-13.5 xl:py-5 active before:absolute before:bottom-0 before:left-0 before:h-1 before:w-full before:rounded-tl-[4px] before:rounded-tr-[4px] before:bg-primary"
+                  >
+                    <div
+                      class="flex h-12.5 w-12.5 items-center justify-center rounded-full border border-stroke dark:border-strokedark dark:bg-blacksection"
+                    >
+                      <p
+                        class="text-metatitle3 font-medium text-black dark:text-white"
+                      >
+                        01
+                      </p>
+                    </div>
+                    <div class="w-full text-left">
+                      <button
+                        class="text-sm font-medium text-black dark:text-white xl:text-regular w-full text-left"
+                      >
+                        Clean User Interface
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Item 2 -->
+                  <div
+                    class="relative flex w-full cursor-pointer items-center gap-4 border-b border-stroke px-6 py-2 last:border-0 dark:border-strokedark md:w-auto md:border-0 xl:px-13.5 xl:py-5"
+                  >
+                    <div
+                      class="flex h-12.5 w-12.5 items-center justify-center rounded-full border border-stroke dark:border-strokedark dark:bg-blacksection"
+                    >
+                      <p
+                        class="text-metatitle3 font-medium text-black dark:text-white"
+                      >
+                        02
+                      </p>
+                    </div>
+                    <div class="w-full text-left">
+                      <button
+                        class="text-sm font-medium text-black dark:text-white xl:text-regular w-full text-left"
+                      >
+                        Essential Business Pages
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Item 3 -->
+                  <div
+                    class="relative flex w-full cursor-pointer items-center gap-4 border-b border-stroke px-6 py-2 last:border-0 dark:border-strokedark md:w-auto md:border-0 xl:px-13.5 xl:py-5"
+                  >
+                    <div
+                      class="flex h-12.5 w-12.5 items-center justify-center rounded-full border border-stroke dark:border-strokedark dark:bg-blacksection"
+                    >
+                      <p
+                        class="text-metatitle3 font-medium text-black dark:text-white"
+                      >
+                        03
+                      </p>
+                    </div>
+                    <div class="w-full text-left">
+                      <button
+                        class="text-sm font-medium text-black dark:text-white xl:text-regular w-full text-left"
+                      >
+                        Fully Functional Integrations
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          
+            <section class="px-4 py-20 md:px-8 lg:py-22.5 2xl:px-0">
+              <div class="mx-auto max-w-screen-xl">
+                <div
+                  class="flex flex-col md:flex-row items-center gap-10 lg:gap-20"
+                >
+                  <!-- Text Content -->
+                  <div class="md:w-1/2">
+                    <h2
+                      class="mb-7 text-3xl font-bold text-black dark:text-white xl:text-4xl"
+                    >
+                      Solid UI with Solid Features.
+                    </h2>
+                    <p class="mb-5 text-gray-700 dark:text-gray-300">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Ut ultricies lacus non fermentum ultrices. Fusce
+                      consectetur le.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400">
+                      Nam id eleifend dui, id iaculis purus. Etiam lobortis
+                      neque nec finibus sagittis. Nulla ligula nunc egestas ut.
+                    </p>
+                  </div>
+
+                  <!-- Image -->
+                  <div
+                    class="relative md:w-1/2 w-full aspect-[562/366] max-w-[550px] hidden md:block"
+                  >
+                    <img
+                      src="https://solid.nextjstemplates.com/_next/image?url=%2Fimages%2Ffeatures%2Ffeatures-light-01.png&w=3840&q=75"
+                      alt="Solid UI with Solid Features"
+                      class="absolute inset-0 w-full h-full object-cover dark:hidden"
+                    />
+                    <img
+                      src="https://solid.nextjstemplates.com/_next/image?url=%2Fimages%2Ffeatures%2Ffeatures-dark-01.png&w=3840&q=75"
+                      alt="Solid UI with Solid Features"
+                      class="absolute inset-0 w-full h-full object-cover hidden dark:block"
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section
+              class="px-4 py-20 md:px-8 lg:py-22.5 2xl:px-0 relative overflow-hidden"
+            >
+              <div
+                class="relative z-10 mx-auto max-w-screen-xl rounded-lg bg-gradient-to-t from-[#F8F9FF] to-[#DEE7FF] py-20 dark:bg-black dark:from-transparent dark:to-transparent"
+              >
+                <!-- Shape Backgrounds -->
+                <img
+                  src="https://solid.nextjstemplates.com/_next/image?url=%2Fimages%2Fshape%2Fshape-04.png&w=750&q=75"
+                  alt="Man"
+                  class="absolute -left-10 -top-20 w-52 hidden lg:block"
+                />
+                <img
+                  src="https://solid.nextjstemplates.com/images/shape/shape-dotted-light-02.svg"
+                  alt="Doodle"
+                  class="absolute bottom-0 right-0 w-28"
+                />
+                <img
+                  src="https://solid.nextjstemplates.com/images/shape/shape-dotted-light-02.svg"
+                  alt="Dotted Light"
+                  class="absolute inset-0 w-full h-full object-cover dark:hidden z-0"
+                />
+                <img
+                  src="https://solid.nextjstemplates.com/images/shape/shape-dotted-dark-02.svg"
+                  alt="Dotted Dark"
+                  class="absolute inset-0 w-full h-full object-cover hidden dark:block z-0"
+                />
+
+                <!-- Title -->
+                <div
+                  class="text-center px-4 md:px-0 mx-auto mb-12 max-w-2xl z-10 relative"
+                >
+                  <h2
+                    class="mb-4 text-3xl font-bold text-black dark:text-white xl:text-4xl"
+                  >
+                    Trusted by Global Companies.
+                  </h2>
+                  <p class="text-gray-700 dark:text-gray-300">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                    convallis tortor eros. Donec vitae tortor lacus. Phasellus
+                    aliquam ante in maximus.
+                  </p>
+                </div>
+
+                <!-- Stats -->
+                <div class="flex flex-wrap justify-center gap-10 z-10 relative">
+                  <div class="text-center">
+                    <h3
+                      class="mb-2 text-3xl font-bold text-black dark:text-white"
+                    >
+                      500K
+                    </h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                      World Wide Clients
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <h3
+                      class="mb-2 text-3xl font-bold text-black dark:text-white"
+                    >
+                      1M+
+                    </h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                      Downloads
+                    </p>
+                  </div>
+                  <div class="text-center">
+                    <h3
+                      class="mb-2 text-3xl font-bold text-black dark:text-white"
+                    >
+                      865
+                    </h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-400">
+                      Winning Award
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <body class="flex flex-col min-h-screen bg-gray-50">
+    <main class="flex-1 flex flex-col items-center justify-center">
+      <div class="text-center max-w-9xl w-full">
+        <section>
+          <div class="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
+            <div
+              class="animate_top mx-auto text-center"
+              style="opacity: 1; transform: none"
+            >
+              <div
+                class="mb-4 inline-block rounded-full bg-zumthor px-4.5 py-1.5 dark:border dark:border-strokedark dark:bg-blacksection"
+              >
+                <span
+                  class="text-sectiontitle font-medium text-black dark:text-white"
+                  >INTEGRATIONS</span
+                >
+              </div>
+              <h2
+                class="mx-auto mb-4 text-3xl font-bold text-black dark:text-white md:w-4/5 xl:w-1/2 xl:text-sectiontitle3"
+              >
+                Packed with all the key integrations you need
+              </h2>
+              <p class="mx-auto md:w-4/5 lg:w-3/5 xl:w-[46%]">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                convallis tortor eros. Donec vitae tortor lacus. Phasellus
+                aliquam ante in maximus.
+              </p>
+            </div>
+          </div>
+          <div
+            class="pattern-dots pattern-blue-500 pattern-bg-white pattern-size-4 pattern-opacity-10 relative z-50 mx-auto mt-15 max-w-c-1154 px-4 md:px-8 xl:mt-20 xl:px-0"
+          >
+            <div
+              class="absolute -top-3/4 left-0 right-0 -z-1 mx-auto h-full w-full"
+            >
+              <img
+                alt="Dotted"
+                loading="lazy"
+                width="1200"
+                height="400"
+                decoding="async"
+                data-nimg="1"
+                class="dark:hidden"
+                src="https://solid.nextjstemplates.com/images/shape/shape-dotted-light-02.svg"
+                style="color: transparent; position: static"
+              /><img
+                alt="Dotted"
+                loading="lazy"
+                decoding="async"
+                data-nimg="fill"
+                class="hidden dark:block"
+                src="https://solid.nextjstemplates.com/images/shape/shape-dotted-dark-02.svg"
+                style="
+                  position: absolute;
+                  height: 100%;
+                  width: 100%;
+                  inset: 0px;
+                  color: transparent;
+                "
+              />
+            </div>
+            <div class="flex flex-wrap justify-around gap-y-10">
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              >
+                <div
+                  class="inline-block rounded-[10px] bg-white p-4.5 shadow-solid-7 dark:bg-btndark"
+                >
+                  <img
+                    alt="Brand"
+                    loading="lazy"
+                    width="50"
+                    height="50"
+                    decoding="async"
+                    data-nimg="1"
+                    src="./images/brand/brand-07.svg"
+                    style="color: transparent"
+                  />
+                </div>
+              </div>
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              ></div>
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              >
+                <div
+                  class="inline-block rounded-[10px] bg-white p-4.5 shadow-solid-7 dark:bg-btndark"
+                >
+                  <img
+                    alt="Brand"
+                    loading="lazy"
+                    width="50"
+                    height="50"
+                    decoding="async"
+                    data-nimg="1"
+                    src="./images/brand/brand-08.svg"
+                    style="color: transparent"
+                  />
+                </div>
+              </div>
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              >
+                <div class="h-[11px] w-[11px] rounded-full bg-[#FFDB26]"></div>
+              </div>
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              >
+                <div
+                  class="inline-block rounded-[10px] bg-white p-4.5 shadow-solid-7 dark:bg-btndark"
+                >
+                  <img
+                    alt="Brand"
+                    loading="lazy"
+                    width="50"
+                    height="50"
+                    decoding="async"
+                    data-nimg="1"
+                    src="./images/brand/brand-09.svg"
+                    style="color: transparent"
+                  />
+                </div>
+              </div>
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              ></div>
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              >
+                <div class="h-[15px] w-[15px] rounded-full bg-[#62E888]"></div>
+              </div>
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              >
+                <div
+                  class="inline-block rounded-[10px] bg-white p-4.5 shadow-solid-7 dark:bg-btndark"
+                >
+                  <img
+                    alt="Brand"
+                    loading="lazy"
+                    width="50"
+                    height="50"
+                    decoding="async"
+                    data-nimg="1"
+                    src="./images/brand/brand-10.svg"
+                    style="color: transparent"
+                  />
+                </div>
+              </div>
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              >
+                <div class="h-[23px] w-[23px] rounded-full bg-[#EF5C00]"></div>
+              </div>
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              >
+                <div
+                  class="inline-block rounded-[10px] bg-white p-4.5 shadow-solid-7 dark:bg-btndark"
+                >
+                  <img
+                    alt="Brand"
+                    loading="lazy"
+                    width="50"
+                    height="50"
+                    decoding="async"
+                    data-nimg="1"
+                    src="./images/brand/brand-11.svg"
+                    style="color: transparent"
+                  />
+                </div>
+              </div>
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              >
+                <div class="h-[15px] w-[15px] rounded-full bg-[#016BFF]"></div>
+              </div>
+              <div
+                class="animate_top w-1/6"
+                style="opacity: 1; transform: none"
+              >
+                <div
+                  class="inline-block rounded-[10px] bg-white p-4.5 shadow-solid-7 dark:bg-btndark"
+                >
+                  <img
+                    alt="Brand"
+                    loading="lazy"
+                    width="50"
+                    height="50"
+                    decoding="async"
+                    data-nimg="1"
+                    src="./images/brand/brand-12.svg"
+                    style="color: transparent"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="overflow-hidden px-4 py-20 md:px-8 lg:py-25 xl:py-30 2xl:px-0"
+        >
+          <div
+            class="mx-auto max-w-c-1390 rounded-lg bg-gradient-to-t from-[#F8F9FF] to-[#DEE7FF] px-7.5 py-12.5 dark:bg-blacksection dark:bg-gradient-to-t dark:from-transparent dark:to-transparent dark:stroke-strokedark md:px-12.5 xl:px-17.5 xl:py-0"
+          >
+            <div
+              class="flex flex-wrap gap-8 md:flex-nowrap md:items-center md:justify-between md:gap-0"
+            >
+              <div
+                class="animate_left md:w-[70%] lg:w-1/2"
+                style="opacity: 1; transform: none"
+              >
+                <h2
+                  class="mb-4 w-11/12 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle4"
+                >
+                  Join With Us Today &amp; Increase Your Productivity
+                </h2>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                  convallis tortor eros. Donec vitae tortor lacus. Phasellus
+                  aliquam ante in maximus.
+                </p>
+              </div>
+              <div
+                class="animate_right lg:w-[45%]"
+                style="opacity: 1; transform: none"
+              >
+                <div class="flex items-center justify-end xl:justify-between">
+                  <img
+                    alt="Saly"
+                    loading="lazy"
+                    width="299"
+                    height="299"
+                    decoding="async"
+                    data-nimg="1"
+                    class="hidden xl:block"
+                    srcset="
+                      /_next/image?url=%2Fimages%2Fshape%2Fshape-06.png&amp;w=384&amp;q=75 1x,
+                      /_next/image?url=%2Fimages%2Fshape%2Fshape-06.png&amp;w=640&amp;q=75 2x
+                    "
+                    src="/_next/image?url=%2Fimages%2Fshape%2Fshape-06.png&amp;w=640&amp;q=75"
+                    style="color: transparent"
+                  /><a
+                    href="/signup"
+                    class="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white hover:opacity-90 dark:bg-white dark:text-black"
+                    >Sign up free<span class="pl-2.5"
+                      ><svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.4766 6.16664L6.00664 1.69664L7.18498 0.518311L13.6666 6.99998L7.18498 13.4816L6.00664 12.3033L10.4766 7.83331H0.333313V6.16664H10.4766Z"
+                          fill="currentColor"
+                        ></path></svg></span
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="overflow-hidden pb-20 lg:pb-25 xl:pb-30">
+          <div class="relative mx-auto max-w-c-1235 px-4 md:px-8 xl:px-0">
+            <div class="absolute -bottom-16 -z-1 h-full w-full">
+              <img
+                alt="Dotted"
+                loading="lazy"
+                decoding="async"
+                data-nimg="fill"
+                class="dark:hidden"
+                src="/images/shape/shape-dotted-light.svg"
+                style="
+                  position: absolute;
+                  height: 100%;
+                  width: 100%;
+                  inset: 0px;
+                  color: transparent;
+                "
+              /><img
+                alt="Dotted"
+                loading="lazy"
+                decoding="async"
+                data-nimg="fill"
+                class="hidden dark:block"
+                src="/images/shape/shape-dotted-light.svg"
+                style="
+                  position: absolute;
+                  height: 100%;
+                  width: 100%;
+                  inset: 0px;
+                  color: transparent;
+                "
+              />
+            </div>
+            <div
+              class="flex flex-wrap gap-8 md:flex-nowrap md:items-center xl:gap-32.5"
+            >
+              <div
+                class="animate_left md:w-2/5 lg:w-1/2"
+                style="opacity: 1; transform: none"
+              >
+                <span class="font-medium uppercase text-black dark:text-white"
+                  >OUR FAQS</span
+                >
+                <h2
+                  class="relative mb-6 text-3xl font-bold text-black dark:text-white xl:text-hero"
+                >
+                  Frequently Asked<span
+                    class="relative inline-block before:absolute before:bottom-2.5 before:left-0 before:-z-1 before:h-3 before:w-full before:bg-titlebg2 dark:before:bg-titlebgdark"
+                    >Questions</span
+                  >
+                </h2>
+                <a
+                  href="#"
+                  class="group mt-7.5 inline-flex items-center gap-2.5 text-black hover:text-primary dark:text-white dark:hover:text-primary"
+                  ><span class="duration-300 group-hover:pr-2">Know More</span
+                  ><svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
+                      fill="currentColor"
+                    ></path></svg
+                ></a>
+              </div>
+              <div
+                class="animate_right md:w-3/5 lg:w-1/2"
+                style="opacity: 1; transform: none"
+              >
+                <div
+                  class="rounded-lg bg-white shadow-solid-8 dark:border dark:border-strokedark dark:bg-blacksection"
+                >
+                  <div
+                    class="flex flex-col border-b border-stroke last-of-type:border-none dark:border-strokedark"
+                  >
+                    <div class="faq-item flex flex-col border-b border-stroke last-of-type:border-none dark:border-strokedark">
+                      <button
+                        class="faq-question flex cursor-pointer items-center justify-between px-6 py-5 text-metatitle3 font-medium text-black dark:text-white lg:px-9 lg:py-7.5"
+                        onclick="toggleFaq(this)"
+                        aria-expanded="true"
+                      >
+                        Lorem ipsum dolor sit amet, consectetur
+                        <svg width="18" height="4" viewBox="0 0 18 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M17.1666 0.833374H10.1666H7.83331H0.833313V3.16671H7.83331H10.1666H17.1666V0.833374Z" fill="currentColor"></path>
+                        </svg>
+                      </button>
+                      <p
+                        class="faq-answer border-t border-stroke px-6 py-5 dark:border-strokedark lg:px-9 lg:py-7.5 block"
+                        style="display: block;"
+                      >
+                        We provide digital experience services to startups and
+                        small businesses. We help our clients succeed by creating
+                        brand identities, digital experiences.
+                      </p>
+                    </div>
+                    <div class="faq-item flex flex-col border-b border-stroke last-of-type:border-none dark:border-strokedark">
+                      <button
+                        class="faq-question flex cursor-pointer items-center justify-between px-6 py-5 text-metatitle3 font-medium text-black dark:text-white lg:px-9 lg:py-7.5"
+                        onclick="toggleFaq(this)"
+                        aria-expanded="false"
+                      >
+                        Lorem ipsum dolor sit amet, consectetur
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7.83331 7.83337V0.833374H10.1666V7.83337H17.1666V10.1667H10.1666V17.1667H7.83331V10.1667H0.833313V7.83337H7.83331Z" fill="currentColor"></path>
+                        </svg>
+                      </button>
+                      <p
+                        class="faq-answer border-t border-stroke px-6 py-5 dark:border-strokedark lg:px-9 lg:py-7.5 hidden"
+                        style="display: none;"
+                      >
+                        We provide digital experience services to startups and
+                        small businesses. We help our clients succeed by creating
+                        brand identities, digital experiences.
+                      </p>
+                    </div>
+                    <div class="faq-item flex flex-col border-b border-stroke last-of-type:border-none dark:border-strokedark">
+                      <button
+                        class="faq-question flex cursor-pointer items-center justify-between px-6 py-5 text-metatitle3 font-medium text-black dark:text-white lg:px-9 lg:py-7.5"
+                        onclick="toggleFaq(this)"
+                        aria-expanded="false"
+                      >
+                        Lorem ipsum dolor sit amet, consectetur
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7.83331 7.83337V0.833374H10.1666V7.83337H17.1666V10.1667H10.1666V17.1667H7.83331V10.1667H0.833313V7.83337H7.83331Z" fill="currentColor"></path>
+                        </svg>
+                      </button>
+                      <p
+                        class="faq-answer border-t border-stroke px-6 py-5 dark:border-strokedark lg:px-9 lg:py-7.5 hidden"
+                        style="display: none;"
+                      >
+                        We provide digital experience services to startups and
+                        small businesses. We help our clients succeed by creating
+                        brand identities, digital experiences.
+                      </p>
+                    </div>
+<script>
+  function toggleFaq(btn) {
+    // Collapse all
+    document.querySelectorAll('.faq-item').forEach(function(item) {
+      item.querySelector('.faq-answer').style.display = 'none';
+      item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      // Change icon to plus
+      let svg = item.querySelector('.faq-question svg');
+      if(svg) {
+        svg.innerHTML = '<path d="M7.83331 7.83337V0.833374H10.1666V7.83337H17.1666V10.1667H10.1666V17.1667H7.83331V10.1667H0.833313V7.83337H7.83331Z" fill="currentColor"></path>';
+      }
+    });
+    // Expand clicked
+    let answer = btn.parentElement.querySelector('.faq-answer');
+    answer.style.display = 'block';
+    btn.setAttribute('aria-expanded', 'true');
+    // Change icon to minus
+    let svg = btn.querySelector('svg');
+    if(svg) {
+      svg.innerHTML = '<path d="M17.1666 0.833374H10.1666H7.83331H0.833313V3.16671H7.83331H10.1666H17.1666V0.833374Z" fill="currentColor"></path>';
+    }
+  }
+</script>
+                    <p
+                      class="border-t border-stroke px-6 py-5 dark:border-strokedark lg:px-9 lg:py-7.5 hidden"
+                    >
+                      We provide digital experience services to startups and
+                      small businesses. We help our clients succeed by creating
+                      brand identities, digital experiences.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SwiperJS CDN for slider effect -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+        <style>
+            /* Move pagination dots down and style effect */
+            .testimonial-swiper .swiper-pagination {
+                position: relative;
+                margin-top: 32px;
+                bottom: 0 !important;
+                text-align: center;
+            }
+            .testimonial-swiper .swiper-pagination-bullet {
+                width: 14px;
+                height: 14px;
+                background: #d1d8e0;
+                opacity: 1;
+                margin: 0 6px !important;
+                transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+                border-radius: 50%;
+                box-shadow: none;
+            }
+            .testimonial-swiper .swiper-pagination-bullet:hover,
+            .testimonial-swiper .swiper-pagination-bullet:focus {
+                background: #016bff;
+                transform: scale(1.2);
+                box-shadow: 0 0 0 4px rgba(1,107,255,0.15);
+            }
+            .testimonial-swiper .swiper-pagination-bullet-active {
+                background: #016bff;
+                transform: scale(1.2);
+                box-shadow: 0 0 0 4px rgba(1,107,255,0.15);
+            }
+        </style>
+        <section>
+                <div class="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
+                        <div class="animate_top mx-auto text-center">
+                                <div
+                                        class="animate_top mx-auto text-center"
+                                        style="opacity: 1; transform: none"
+                                >
+                                        <div
+                                                class="mb-4 inline-block rounded-full bg-zumthor px-4.5 py-1.5 dark:border dark:border-strokedark dark:bg-blacksection"
+                                        >
+                                                <span
+                                                        class="text-sectiontitle font-medium text-black dark:text-white"
+                                                        >TESTIMONIALS</span
+                                                >
+                                        </div>
+                                        <h2
+                                                class="mx-auto mb-4 text-3xl font-bold text-black dark:text-white md:w-4/5 xl:w-1/2 xl:text-sectiontitle3"
+                                        >
+                                                Client’s Testimonials
+                                        </h2>
+                                        <p class="mx-auto md:w-4/5 lg:w-3/5 xl:w-[46%]">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                                                convallis tortor eros. Donec vitae tortor lacus. Phasellus
+                                                aliquam ante in maximus.
+                                        </p>
+                                </div>
+                        </div>
+                </div>
+                <div
+                        class="animate_top mx-auto mt-15 max-w-c-1235 px-4 md:px-8 xl:mt-20 xl:px-0"
+                        style="opacity: 1; transform: none"
+                >
+                        <div class="swiper testimonial-swiper mb-20 pb-22.5">
+                                <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                                <div
+                                                        class="rounded-lg bg-white p-9 pt-7.5 shadow-solid-9 dark:border dark:border-strokedark dark:bg-blacksection dark:shadow-none"
+                                                >
+                                                        <div
+                                                                class="mb-7.5 flex justify-between border-b border-stroke pb-6 dark:border-strokedark"
+                                                        >
+                                                                <div>
+                                                                        <h3
+                                                                                class="mb-1.5 text-metatitle3 text-black dark:text-white"
+                                                                        >
+                                                                                Devid Smith
+                                                                        </h3>
+                                                                        <p>Founter @democompany</p>
+                                                                </div>
+                                                                <img
+                                                                        alt="Devid Smith"
+                                                                        loading="lazy"
+                                                                        width="60"
+                                                                        height="50"
+                                                                        decoding="async"
+                                                                        data-nimg="1"
+                                                                        class=""
+                                                                        src="https://randomuser.me/api/portraits/men/32.jpg"
+                                                                        style="color: transparent; object-fit: cover; width: 60px; height: 50px; border-radius: 50%;"
+                                                                />
+                                                        </div>
+                                                        <p>
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                                Mauris hendrerit, ligula sit amet cursus tincidunt,
+                                                                lorem sem elementum nisi, convallis fringilla ante nibh
+                                                                non urna.
+                                                        </p>
+                                                </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                                <div
+                                                        class="rounded-lg bg-white p-9 pt-7.5 shadow-solid-9 dark:border dark:border-strokedark dark:bg-blacksection dark:shadow-none"
+                                                >
+                                                        <div
+                                                                class="mb-7.5 flex justify-between border-b border-stroke pb-6 dark:border-strokedark"
+                                                        >
+                                                                <div>
+                                                                        <h3
+                                                                                class="mb-1.5 text-metatitle3 text-black dark:text-white"
+                                                                        >
+                                                                                Jhon Abraham
+                                                                        </h3>
+                                                                        <p>Founter @democompany</p>
+                                                                </div>
+                                                                <img
+                                                                        alt="Jhon Abraham"
+                                                                        loading="lazy"
+                                                                        width="60"
+                                                                        height="60"
+                                                                        decoding="async"
+                                                                        data-nimg="1"
+                                                                        class=""
+                                                                        src="https://randomuser.me/api/portraits/men/46.jpg"
+                                                                        style="object-fit: cover; width: 60px; height: 60px; border-radius: 50%;"
+                                                                />
+                                                        </div>
+                                                        <p>
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                                Mauris hendrerit, ligula sit amet cursus tincidunt,
+                                                                lorem sem elementum nisi, convallis fringilla ante nibh
+                                                                non urna.
+                                                        </p>
+                                                </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                                <div
+                                                        class="rounded-lg bg-white p-9 pt-7.5 shadow-solid-9 dark:border dark:border-strokedark dark:bg-blacksection dark:shadow-none"
+                                                >
+                                                        <div
+                                                                class="mb-7.5 flex justify-between border-b border-stroke pb-6 dark:border-strokedark"
+                                                        >
+                                                                <div>
+                                                                        <h3
+                                                                                class="mb-1.5 text-metatitle3 text-black dark:text-white"
+                                                                        >
+                                                                                Devid Smith
+                                                                        </h3>
+                                                                        <p>Founter @democompany</p>
+                                                                </div>
+                                                                <img
+                                                                        alt="Custom Avatar"
+                                                                        loading="lazy"
+                                                                        width="60"
+                                                                        height="60"
+                                                                        decoding="async"
+                                                                        data-nimg="1"
+                                                                        class=""
+                                                                        src="https://randomuser.me/api/portraits/women/44.jpg"
+                                                                        style="object-fit: cover; width: 60px; height: 60px; border-radius: 50%;"
+                                                                />
+                                                        </div>
+                                                        <p>
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                                Mauris hendrerit, ligula sit amet cursus tincidunt,
+                                                                lorem sem elementum nisi, convallis fringilla ante nibh
+                                                                non urna.
+                                                        </p>
+                                                </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                                <div
+                                                        class="rounded-lg bg-white p-9 pt-7.5 shadow-solid-9 dark:border dark:border-strokedark dark:bg-blacksection dark:shadow-none"
+                                                >
+                                                        <div
+                                                                class="mb-7.5 flex justify-between border-b border-stroke pb-6 dark:border-strokedark"
+                                                        >
+                                                                <div>
+                                                                        <h3
+                                                                                class="mb-1.5 text-metatitle3 text-black dark:text-white"
+                                                                        >
+                                                                                Jhon Abraham
+                                                                        </h3>
+                                                                        <p>Founter @democompany</p>
+                                                                </div>
+                                                                <img
+                                                                        alt="Jhon Abraham"
+                                                                        loading="lazy"
+                                                                        width="60"
+                                                                        height="50"
+                                                                        decoding="async"
+                                                                        data-nimg="1"
+                                                                        class=""
+                                                                        src="https://randomuser.me/api/portraits/men/45.jpg"
+                                                                        style="color: transparent; object-fit: cover; width: 60px; height: 50px; border-radius: 50%;"
+                                                                />
+                                                        </div>
+                                                        <p>
+                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                                Mauris hendrerit, ligula sit amet cursus tincidunt,
+                                                                lorem sem elementum nisi, convallis fringilla ante nibh
+                                                                non urna.
+                                                        </p>
+                                                </div>
+                                        </div>
+                                </div>
+                                <!-- Pagination -->
+                                <div class="swiper-pagination"></div>
+                                <!-- Navigation buttons -->
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                        </div>
+                </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <script>
+            new Swiper('.testimonial-swiper', {
+            loop: true,
+            speed: 600,
+            spaceBetween: 50,
+            slidesPerView: 2, // Hiển thị 2 tab đồng thời
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            },
+            effect: 'slide',
+            autoplay: {
+                delay: 1000, // Đổi thành 1s (1000ms)
+                disableOnInteraction: false
+            },
+            breakpoints: {
+                // Giữ nguyên 1 tab trên mobile, 2 tab trên desktop
+                0: {
+                slidesPerView: 1
+                },
+                768: {
+                slidesPerView: 2
+                }
+            }
+            });
+        </script>
+
+        <section class="overflow-hidden pb-20 pt-15 lg:pb-25 xl:pb-30">
+          <div class="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
+            <div class="animate_top mx-auto text-center">
+              <div
+                class="animate_top mx-auto text-center"
+                style="opacity: 1; transform: none"
+              >
+                <div
+                  class="mb-4 inline-block rounded-full bg-zumthor px-4.5 py-1.5 dark:border dark:border-strokedark dark:bg-blacksection"
+                >
+                  <span
+                    class="text-sectiontitle font-medium text-black dark:text-white"
+                    >PRICING PLANS</span
+                  >
+                </div>
+                <h2
+                  class="mx-auto mb-4 text-3xl font-bold text-black dark:text-white md:w-4/5 xl:w-1/2 xl:text-sectiontitle3"
+                >
+                  Simple Pricing
+                </h2>
+                <p class="mx-auto md:w-4/5 lg:w-3/5 xl:w-[46%]">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                  convallis tortor eros. Donec vitae tortor lacus. Phasellus
+                  aliquam ante in maximus.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="relative mx-auto mt-15 max-w-[1207px] px-4 md:px-8 xl:mt-20 xl:px-0"
+          >
+            <div class="absolute -bottom-15 -z-1 h-full w-full">
+              <img
+                alt="Dotted"
+                loading="lazy"
+                decoding="async"
+                data-nimg="fill"
+                class="dark:hidden"
+                src="./images/shape/shape-dotted-light.svg"
+                style="
+                  position: absolute;
+                  height: 100%;
+                  width: 100%;
+                  inset: 0px;
+                  color: transparent;
+                "
+              />
+            </div>
+            <div
+              class="flex flex-wrap justify-center gap-7.5 lg:flex-nowrap xl:gap-12.5"
+            >
+              <div
+                class="animate_top group relative rounded-lg border border-stroke bg-white p-7.5 shadow-solid-10 dark:border-strokedark dark:bg-blacksection dark:shadow-none md:w-[45%] lg:w-1/3 xl:p-12.5"
+                style="opacity: 1; transform: none"
+              >
+                <h3
+                  class="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3"
+                >
+                  $ 100<span
+                    class="text-regular text-waterloo dark:text-manatee"
+                    >/month</span
+                  >
+                </h3>
+                <h4
+                  class="mb-2.5 text-para2 font-medium text-black dark:text-white"
+                >
+                  Small Pack
+                </h4>
+                <p>Lorem ipsum dolor sit amet, consec adipisicing elit.</p>
+                <div
+                  class="mt-9 border-t border-stroke pb-12.5 pt-9 dark:border-strokedark"
+                >
+                  <ul>
+                    <li class="mb-4 text-black last:mb-0 dark:text-manatee">
+                      300 GB Storage
+                    </li>
+                    <li class="mb-4 text-black last:mb-0 dark:text-manatee">
+                      Unlimited Photos and Videos
+                    </li>
+                    <li
+                      class="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee"
+                    >
+                      Exclusive Support
+                    </li>
+                    <li
+                      class="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee"
+                    >
+                      Custom Branding Strategy
+                    </li>
+                  </ul>
+                </div>
+                <button
+                  aria-label="purchase this plan"
+                  class="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
+                >
+                  <span class="duration-300 group-hover/btn:pr-2">
+                    Get the Plan</span
+                  ><svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="animate_top group relative rounded-lg border border-stroke bg-white p-7.5 shadow-solid-10 dark:border-strokedark dark:bg-blacksection dark:shadow-none md:w-[45%] lg:w-1/3 xl:p-12.5"
+                style="opacity: 1; transform: none"
+              >
+                <div
+                  class="absolute -right-3.5 top-7.5 -rotate-90 rounded-bl-full rounded-tl-full bg-primary px-4.5 py-1.5 text-metatitle font-medium uppercase text-white"
+                >
+                  popular
+                </div>
+                <h3
+                  class="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3"
+                >
+                  $ 200<span
+                    class="text-regular text-waterloo dark:text-manatee"
+                    >/month</span
+                  >
+                </h3>
+                <h4
+                  class="mb-2.5 text-para2 font-medium text-black dark:text-white"
+                >
+                  Medium Pack
+                </h4>
+                <p>Lorem ipsum dolor sit amet, consec adipisicing elit.</p>
+                <div
+                  class="mt-9 border-t border-stroke pb-12.5 pt-9 dark:border-strokedark"
+                >
+                  <ul>
+                    <li class="mb-4 text-black last:mb-0 dark:text-manatee">
+                      300 GB Storage
+                    </li>
+                    <li class="mb-4 text-black last:mb-0 dark:text-manatee">
+                      Unlimited Photos and Videos
+                    </li>
+                    <li class="mb-4 text-black last:mb-0 dark:text-manatee">
+                      Exclusive Support
+                    </li>
+                    <li
+                      class="mb-4 text-black opacity-40 last:mb-0 dark:text-manatee"
+                    >
+                      Custom Branding Strategy
+                    </li>
+                  </ul>
+                </div>
+                <button
+                  aria-label="purchase this plan"
+                  class="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
+                >
+                  <span class="duration-300 group-hover/btn:pr-2">
+                    Get the Plan</span
+                  ><svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+              <div
+                class="animate_top group relative rounded-lg border border-stroke bg-white p-7.5 shadow-solid-10 dark:border-strokedark dark:bg-blacksection dark:shadow-none md:w-[45%] lg:w-1/3 xl:p-12.5"
+                style="opacity: 1; transform: none"
+              >
+                <h3
+                  class="mb-7.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3"
+                >
+                  $ 300<span
+                    class="text-regular text-waterloo dark:text-manatee"
+                    >/month</span
+                  >
+                </h3>
+                <h4
+                  class="mb-2.5 text-para2 font-medium text-black dark:text-white"
+                >
+                  Large Pack
+                </h4>
+                <p>Lorem ipsum dolor sit amet, consec adipisicing elit.</p>
+                <div
+                  class="mt-9 border-t border-stroke pb-12.5 pt-9 dark:border-strokedark"
+                >
+                  <ul>
+                    <li class="mb-4 text-black last:mb-0 dark:text-manatee">
+                      300 GB Storage
+                    </li>
+                    <li class="mb-4 text-black last:mb-0 dark:text-manatee">
+                      Unlimited Photos and Videos
+                    </li>
+                    <li class="mb-4 text-black last:mb-0 dark:text-manatee">
+                      Exclusive Support
+                    </li>
+                    <li class="mb-4 text-black last:mb-0 dark:text-manatee">
+                      Custom Branding Strategy
+                    </li>
+                  </ul>
+                </div>
+                <button
+                  aria-label="purchase this plan"
+                  class="group/btn inline-flex items-center gap-2.5 font-medium text-primary transition-all duration-300 dark:text-white dark:hover:text-primary"
+                >
+                  <span class="duration-300 group-hover/btn:pr-2">
+                    Get the Plan</span
+                  ><svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="support" class="px-4 md:px-8 2xl:px-0">
+          <div
+            class="relative mx-auto max-w-c-1390 px-7.5 pt-10 lg:px-15 lg:pt-15 xl:px-20 xl:pt-20"
+          >
+            <div
+              class="absolute left-0 top-0 -z-1 h-2/3 w-full rounded-lg bg-gradient-to-t from-[#fff] to-[#dee7ff47] dark:bg-gradient-to-t dark:from-transparent dark:to-[#24283E]"
+            ></div>
+            <div class="absolute bottom-[-255px] left-0 -z-1 h-full w-full">
+              <img
+                alt="Dotted"
+                loading="lazy"
+                decoding="async"
+                data-nimg="fill"
+                class="dark:hidden"
+                src="./images/shape/shape-dotted-light.svg"
+                style="
+                  position: absolute;
+                  height: 100%;
+                  width: 100%;
+                  inset: 0px;
+                  color: transparent;
+                "
+              /><img
+                alt="Dotted"
+                loading="lazy"
+                decoding="async"
+                data-nimg="fill"
+                class="hidden dark:block"
+                src="./images/shape/shape-dotted-dark.svg"
+                style="
+                  position: absolute;
+                  height: 100%;
+                  width: 100%;
+                  inset: 0px;
+                  color: transparent;
+                "
+              />
+            </div>
+            <div
+              class="flex flex-col-reverse flex-wrap gap-8 md:flex-row md:flex-nowrap md:justify-between xl:gap-20"
+            >
+              <div
+                class="animate_top w-full rounded-lg bg-white p-7.5 shadow-solid-8 dark:border dark:border-strokedark dark:bg-black md:w-3/5 lg:w-3/4 xl:p-15"
+                style="opacity: 1; transform: none"
+              >
+                <h2
+                  class="mb-15 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2"
+                >
+                  Send a message
+                </h2>
+                <form
+                  action="https://formbold.com/s/unique_form_id"
+                  method="POST"
+                >
+                  <div
+                    class="mb-7.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14"
+                  >
+                    <input
+                      placeholder="Full name"
+                      class="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                      type="text"
+                    /><input
+                      placeholder="Email address"
+                      class="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                      type="email"
+                    />
+                  </div>
+                  <div
+                    class="mb-12.5 flex flex-col gap-7.5 lg:flex-row lg:justify-between lg:gap-14"
+                  >
+                    <input
+                      placeholder="Subject"
+                      class="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                      type="text"
+                    /><input
+                      placeholder="Phone number"
+                      class="w-full border-b border-stroke bg-transparent pb-3.5 focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white lg:w-1/2"
+                      type="text"
+                    />
+                  </div>
+                  <div class="mb-11.5 flex">
+                    <textarea
+                      placeholder="Message"
+                      rows="4"
+                      class="w-full border-b border-stroke bg-transparent focus:border-waterloo focus:placeholder:text-black focus-visible:outline-none dark:border-strokedark dark:focus:border-manatee dark:focus:placeholder:text-white"
+                    ></textarea>
+                  </div>
+                  <div class="flex flex-wrap gap-4 xl:justify-between">
+                    <div class="mb-4 flex md:mb-0">
+                      <label
+                        for="default-checkbox"
+                        class="flex max-w-[425px] cursor-pointer select-none"
+                        ><input
+                          id="default-checkbox"
+                          class="peer sr-only"
+                          type="checkbox"
+                        /><span
+                          class="group mt-2 mr-2 flex h-5 min-w-[20px] items-center justify-center rounded border-gray-300 bg-gray-100 text-blue-600 peer-checked:bg-primary dark:border-gray-600 dark:bg-gray-700"
+                          ><svg
+                            class="opacity-0 peer-checked:group-[]:opacity-100"
+                            width="10"
+                            height="8"
+                            viewBox="0 0 10 8"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M9.70704 0.792787C9.89451 0.980314 9.99983 1.23462 9.99983 1.49979C9.99983 1.76495 9.89451 2.01926 9.70704 2.20679L4.70704 7.20679C4.51951 7.39426 4.26521 7.49957 4.00004 7.49957C3.73488 7.49957 3.48057 7.39426 3.29304 7.20679L0.293041 4.20679C0.110883 4.01818 0.0100885 3.76558 0.0123669 3.50339C0.0146453 3.24119 0.119814 2.99038 0.305222 2.80497C0.490631 2.61956 0.741443 2.51439 1.00364 2.51211C1.26584 2.50983 1.51844 2.61063 1.70704 2.79279L4.00004 5.08579L8.29304 0.792787C8.48057 0.605316 8.73488 0.5 9.00004 0.5C9.26521 0.5 9.51951 0.605316 9.70704 0.792787Z"
+                              fill="white"
+                            ></path></svg></span
+                        >By clicking Checkbox, you agree to use our “Form” terms
+                        And consent cookie usage in browser.</label
+                      >
+                    </div>
+                    <button
+                      aria-label="send message"
+                      class="inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-blackho dark:bg-btndark"
+                    >
+                      Send Message<svg
+                        class="fill-white"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.4767 6.16664L6.00668 1.69664L7.18501 0.518311L13.6667 6.99998L7.18501 13.4816L6.00668 12.3033L10.4767 7.83331H0.333344V6.16664H10.4767Z"
+                          fill=""
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="animate_top w-full md:w-2/5 md:p-7.5 lg:w-[26%] xl:pt-15"
+                style="opacity: 1; transform: none"
+              >
+                <h3
+                  class="mb-12.5 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2"
+                >
+                  Find us
+                </h3>
+                <div class="5 mb-7">
+                  <h4
+                    class="mb-4 text-metatitle3 font-medium text-black dark:text-white"
+                  >
+                    Our Loaction
+                  </h4>
+                  <p>290 Maryam Springs 260, Courbevoie, Paris, France</p>
+                </div>
+                <div class="5 mb-7">
+                  <h4
+                    class="mb-4 text-metatitle3 font-medium text-black dark:text-white"
+                  >
+                    Email Address
+                  </h4>
+                  <p><a href="#">yourmail@domainname.com</a></p>
+                </div>
+                <div>
+                  <h4
+                    class="mb-4 text-metatitle3 font-medium text-black dark:text-white"
+                  >
+                    Phone Number
+                  </h4>
+                  <p><a href="#">+009 42334 6343 843</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-20 lg:py-25 xl:py-30">
+          <div class="mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0">
+            <div class="animate_top mx-auto text-center">
+              <div
+                class="animate_top mx-auto text-center"
+                style="opacity: 1; transform: none"
+              >
+                <div
+                  class="mb-4 inline-block rounded-full bg-zumthor px-4.5 py-1.5 dark:border dark:border-strokedark dark:bg-blacksection"
+                >
+                  <span
+                    class="text-sectiontitle font-medium text-black dark:text-white"
+                    >NEWS &amp; BLOGS</span
+                  >
+                </div>
+                <h2
+                  class="mx-auto mb-4 text-3xl font-bold text-black dark:text-white md:w-4/5 xl:w-1/2 xl:text-sectiontitle3"
+                >
+                  Latest News &amp; Blogs
+                </h2>
+                <p class="mx-auto md:w-4/5 lg:w-3/5 xl:w-[46%]">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                  convallis tortor eros. Donec vitae tortor lacus. Phasellus
+                  aliquam ante in maximus.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mx-auto mt-15 max-w-c-1280 px-4 md:px-8 xl:mt-20 xl:px-0">
+            <div
+              class="grid grid-cols-1 gap-7.5 md:grid-cols-2 lg:grid-cols-3 xl:gap-10"
+            >
+              <div
+                class="animate_top group rounded-lg bg-white p-4 pb-9 shadow-solid-8 dark:bg-blacksection"
+                style="opacity: 1; transform: none"
+              >
+                <a
+                class="relative block aspect-[368/239] overflow-hidden rounded-lg"
+                href="/blog/exploring-the-mern-stack-powering-modern-web-development"
+                >
+                    <img
+                        alt="Exploring MERN Stack: Powering Modern Web Development"
+                        loading="lazy"
+                        class="duration-300 group-hover:scale-110 w-full h-full object-cover"
+                        src="images/blog/blog-01.png"
+                        style="
+                            position: absolute;
+                            height: 100%;
+                            width: 100%;
+                            inset: 0px;
+                            color: transparent;
+                        "
+                    />
+                /></a>
+                <div class="px-4">
+                  <h3
+                    class="mb-3.5 mt-7.5 line-clamp-2 text-lg font-medium text-black hover:text-primary dark:text-white dark:hover:text-primary xl:text-itemtitle2"
+                  >
+                    <a
+                      href="/blog/exploring-the-mern-stack-powering-modern-web-development"
+                      >Exploring MERN Stack: Powering Modern We...</a
+                    >
+                  </h3>
+                  <p class="line-clamp-3">
+                    In the world of web development, staying ahead of the curve
+                    is crucial. One technology stack that ha
+                  </p>
+                </div>
+              </div>
+              <div
+                class="animate_top group rounded-lg bg-white p-4 pb-9 shadow-solid-8 dark:bg-blacksection"
+                style="opacity: 1; transform: none"
+              >
+                <a
+                    class="relative block aspect-[368/239] overflow-hidden rounded-lg"
+                    href="/blog/best-ui-components-for-modern-websites"
+                >
+                    <img
+                        alt="Best UI components for modern website"
+                        loading="lazy"
+                        class="duration-300 group-hover:scale-110 w-full h-full object-cover"
+                        src="images/blog/blog-02.png"
+                        style="
+                            position: absolute;
+                            height: 100%;
+                            width: 100%;
+                            inset: 0px;
+                            color: transparent;
+                        "
+                    />
+                </a>
+                <div class="px-4">
+                  <h3
+                    class="mb-3.5 mt-7.5 line-clamp-2 text-lg font-medium text-black hover:text-primary dark:text-white dark:hover:text-primary xl:text-itemtitle2"
+                  >
+                    <a href="/blog/best-ui-components-for-modern-websites"
+                      >Best UI components for modern website...</a
+                    >
+                  </h3>
+                  <p class="line-clamp-3">
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="animate_top group rounded-lg bg-white p-4 pb-9 shadow-solid-8 dark:bg-blacksection"
+                style="opacity: 1; transform: none"
+              >
+                <a
+                    class="relative block aspect-[368/239] overflow-hidden rounded-lg"
+                    href="/blog/the-power-of-uiux-elevating-digital-experiences"
+                >
+                    <img
+                        alt="The Power of UI/UX: Elevating Digital Experiences"
+                        loading="lazy"
+                        class="duration-300 group-hover:scale-110 w-full h-full object-cover"
+                        src="images/blog/blog-03.png"
+                        style="
+                            position: absolute;
+                            height: 100%;
+                            width: 100%;
+                            inset: 0px;
+                            color: transparent;
+                        "
+                    />
+                </a>
+                <div class="px-4">
+                  <h3
+                    class="mb-3.5 mt-7.5 line-clamp-2 text-lg font-medium text-black hover:text-primary dark:text-white dark:hover:text-primary xl:text-itemtitle2"
+                  >
+                    <a
+                      href="/blog/the-power-of-uiux-elevating-digital-experiences"
+                      >The Power of UI/UX: Elevating Digital Ex...</a
+                    >
+                  </h3>
+                  <p class="line-clamp-3">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Cras sit amet dictum neque, laoreet dolor.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer
+      class="border-t border-stroke bg-white dark:border-strokedark dark:bg-blacksection w-full"
+    >
+      <div class="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
+        <div class="py-20 lg:py-25">
+          <div class="flex flex-wrap gap-8 lg:justify-between lg:gap-0">
+            <div
+              class="animate_top w-1/2 lg:w-1/4"
+              style="opacity: 1; transform: none"
+            >
+              <a href="index.html" class="relative"
+                ><img
+                  alt="Logo"
+                  loading="lazy"
+                  width="110"
+                  height="80"
+                  decoding="async"
+                  data-nimg="1"
+                  class="dark:hidden"
+                  src="/images/logo/logo-light.svg"
+                  style="color: transparent" /><img
+                  alt="Logo"
+                  loading="lazy"
+                  width="110"
+                  height="80"
+                  decoding="async"
+                  data-nimg="1"
+                  class="hidden dark:block"
+                  src="/images/logo/logo-dark.svg"
+                  style="color: transparent"
+              /></a>
+              <p class="mb-10 mt-5">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+              <p class="mb-1.5 text-sectiontitle uppercase tracking-[5px]">
+                contact
+              </p>
+              <a
+                href="#"
+                class="text-itemtitle font-medium text-black dark:text-white"
+                >hello@solid.com</a
+              >
+            </div>
+            <div
+              class="flex w-full flex-col gap-8 md:flex-row md:justify-between md:gap-0 lg:w-2/3 xl:w-7/12"
+            >
+              <div class="animate_top" style="opacity: 1; transform: none">
+                <h4
+                  class="mb-9 text-itemtitle2 font-medium text-black dark:text-white"
+                >
+                  Quick Links
+                </h4>
+                <ul>
+                  <li>
+                    <a href="#" class="mb-3 inline-block hover:text-primary"
+                      >Home</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="mb-3 inline-block hover:text-primary"
+                      >Product</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="mb-3 inline-block hover:text-primary"
+                      >Careers</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="mb-3 inline-block hover:text-primary"
+                      >Pricing</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="animate_top" style="opacity: 1; transform: none">
+                <h4
+                  class="mb-9 text-itemtitle2 font-medium text-black dark:text-white"
+                >
+                  Support
+                </h4>
+                <ul>
+                  <li>
+                    <a href="#" class="mb-3 inline-block hover:text-primary"
+                      >Company</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="mb-3 inline-block hover:text-primary"
+                      >Press media</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="mb-3 inline-block hover:text-primary"
+                      >Our Blog</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="mb-3 inline-block hover:text-primary"
+                      >Contact Us</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="animate_top" style="opacity: 1; transform: none">
+                <h4
+                  class="mb-9 text-itemtitle2 font-medium text-black dark:text-white"
+                >
+                  Newsletter
+                </h4>
+                <p class="mb-4 w-[90%]">Subscribe to receive future updates</p>
+                <form>
+                  <div class="relative">
+                    <input
+                      placeholder="Email address"
+                      required=""
+                      class="w-full rounded-full border border-stroke px-6 py-3 shadow-solid-11 focus:border-primary focus:outline-none dark:border-strokedark dark:bg-black dark:shadow-none dark:focus:border-primary"
+                      type="email"
+                      value=""
+                    /><button
+                      aria-label="signup to newsletter"
+                      class="absolute right-0 p-4"
+                    >
+                      <svg
+                        class="fill-[#757693] hover:fill-primary dark:fill-white"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g clip-path="url(#clip0_48_1487)">
+                          <path
+                            d="M3.1175 1.17318L18.5025 9.63484C18.5678 9.67081 18.6223 9.72365 18.6602 9.78786C18.6982 9.85206 18.7182 9.92527 18.7182 9.99984C18.7182 10.0744 18.6982 10.1476 18.6602 10.2118C18.6223 10.276 18.5678 10.3289 18.5025 10.3648L3.1175 18.8265C3.05406 18.8614 2.98262 18.8792 2.91023 18.8781C2.83783 18.8769 2.76698 18.857 2.70465 18.8201C2.64232 18.7833 2.59066 18.7308 2.55478 18.6679C2.51889 18.6051 2.50001 18.5339 2.5 18.4615V1.53818C2.50001 1.46577 2.51889 1.39462 2.55478 1.33174C2.59066 1.26885 2.64232 1.2164 2.70465 1.17956C2.76698 1.14272 2.83783 1.12275 2.91023 1.12163C2.98262 1.12051 3.05406 1.13828 3.1175 1.17318ZM4.16667 10.8332V16.3473L15.7083 9.99984L4.16667 3.65234V9.16651H8.33333V10.8332H4.16667Z"
+                            fill=""
+                          ></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_48_1487">
+                            <rect width="20" height="20" fill="white"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col flex-wrap items-center justify-center gap-5 border-t border-stroke py-7 dark:border-strokedark lg:flex-row lg:justify-between lg:gap-0"
+        >
+          <div class="animate_top" style="opacity: 1; transform: none">
+            <ul class="flex items-center gap-8">
+              <li><a href="#" class="hover:text-primary">English</a></li>
+              <li><a href="#" class="hover:text-primary">Privacy Policy</a></li>
+              <li><a href="#" class="hover:text-primary">Support</a></li>
+            </ul>
+          </div>
+          <div class="animate_top" style="opacity: 1; transform: none">
+            <p>© 2025 Solid. All rights reserved</p>
+          </div>
+          <div class="animate_top" style="opacity: 1; transform: none">
+            <ul class="flex items-center gap-5">
+              <li>
+                <a href="#" aria-label="social-link"
+                  ><svg
+                    class="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_48_1499)">
+                      <path
+                        d="M14 13.5H16.5L17.5 9.5H14V7.5C14 6.47 14 5.5 16 5.5H17.5V2.14C17.174 2.097 15.943 2 14.643 2C11.928 2 10 3.657 10 6.7V9.5H7V13.5H10V22H14V13.5Z"
+                        fill=""
+                      ></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_48_1499">
+                        <rect width="24" height="24" fill="white"></rect>
+                      </clipPath>
+                    </defs></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#" aria-label="social-link"
+                  ><svg
+                    class="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_48_1502)">
+                      <path
+                        d="M22.162 5.65593C21.3985 5.99362 20.589 6.2154 19.76 6.31393C20.6337 5.79136 21.2877 4.96894 21.6 3.99993C20.78 4.48793 19.881 4.82993 18.944 5.01493C18.3146 4.34151 17.4803 3.89489 16.5709 3.74451C15.6615 3.59413 14.7279 3.74842 13.9153 4.18338C13.1026 4.61834 12.4564 5.30961 12.0771 6.14972C11.6978 6.98983 11.6067 7.93171 11.818 8.82893C10.1551 8.74558 8.52832 8.31345 7.04328 7.56059C5.55823 6.80773 4.24812 5.75098 3.19799 4.45893C2.82628 5.09738 2.63095 5.82315 2.63199 6.56193C2.63199 8.01193 3.36999 9.29293 4.49199 10.0429C3.828 10.022 3.17862 9.84271 2.59799 9.51993V9.57193C2.59819 10.5376 2.93236 11.4735 3.54384 12.221C4.15532 12.9684 5.00647 13.4814 5.95299 13.6729C5.33661 13.84 4.6903 13.8646 4.06299 13.7449C4.32986 14.5762 4.85 15.3031 5.55058 15.824C6.25117 16.345 7.09712 16.6337 7.96999 16.6499C7.10247 17.3313 6.10917 17.8349 5.04687 18.1321C3.98458 18.4293 2.87412 18.5142 1.77899 18.3819C3.69069 19.6114 5.91609 20.2641 8.18899 20.2619C15.882 20.2619 20.089 13.8889 20.089 8.36193C20.089 8.18193 20.084 7.99993 20.076 7.82193C20.8949 7.2301 21.6016 6.49695 22.163 5.65693L22.162 5.65593Z"
+                        fill=""
+                      ></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_48_1502">
+                        <rect width="24" height="24" fill="white"></rect>
+                      </clipPath>
+                    </defs></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#" aria-label="social-link"
+                  ><svg
+                    class="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_48_1505)">
+                      <path
+                        d="M6.94 5.00002C6.93974 5.53046 6.72877 6.03906 6.35351 6.41394C5.97825 6.78883 5.46944 6.99929 4.939 6.99902C4.40857 6.99876 3.89997 6.78779 3.52508 6.41253C3.1502 6.03727 2.93974 5.52846 2.94 4.99802C2.94027 4.46759 3.15124 3.95899 3.5265 3.5841C3.90176 3.20922 4.41057 2.99876 4.941 2.99902C5.47144 2.99929 5.98004 3.21026 6.35492 3.58552C6.72981 3.96078 6.94027 4.46959 6.94 5.00002ZM7 8.48002H3V21H7V8.48002ZM13.32 8.48002H9.34V21H13.28V14.43C13.28 10.77 18.05 10.43 18.05 14.43V21H22V13.07C22 6.90002 14.94 7.13002 13.28 10.16L13.32 8.48002Z"
+                        fill=""
+                      ></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_48_1505">
+                        <rect width="24" height="24" fill="white"></rect>
+                      </clipPath>
+                    </defs></svg
+                ></a>
+              </li>
+              <li>
+                <a href="#" aria-label="social-link"
+                  ><svg
+                    class="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_48_1508)">
+                      <path
+                        d="M7.443 5.3501C8.082 5.3501 8.673 5.4001 9.213 5.5481C9.70301 5.63814 10.1708 5.82293 10.59 6.0921C10.984 6.3391 11.279 6.6861 11.475 7.1311C11.672 7.5761 11.77 8.1211 11.77 8.7141C11.77 9.4071 11.623 10.0001 11.279 10.4451C10.984 10.8911 10.492 11.2861 9.902 11.5831C10.738 11.8311 11.377 12.2761 11.77 12.8691C12.164 13.4631 12.41 14.2051 12.41 15.0461C12.41 15.7391 12.262 16.3321 12.016 16.8271C11.77 17.3221 11.377 17.7671 10.934 18.0641C10.4528 18.3825 9.92084 18.6165 9.361 18.7561C8.771 18.9051 8.181 19.0041 7.591 19.0041H1V5.3501H7.443ZM7.049 10.8901C7.59 10.8901 8.033 10.7421 8.377 10.4951C8.721 10.2481 8.869 9.8021 8.869 9.2581C8.869 8.9611 8.819 8.6641 8.721 8.4671C8.623 8.2691 8.475 8.1201 8.279 7.9721C8.082 7.8731 7.885 7.7741 7.639 7.7251C7.393 7.6751 7.148 7.6751 6.852 7.6751H4V10.8911H7.05L7.049 10.8901ZM7.197 16.7281C7.492 16.7281 7.787 16.6781 8.033 16.6291C8.28138 16.5819 8.51628 16.4805 8.721 16.3321C8.92139 16.1873 9.08903 16.002 9.213 15.7881C9.311 15.5411 9.41 15.2441 9.41 14.8981C9.41 14.2051 9.213 13.7101 8.82 13.3641C8.426 13.0671 7.885 12.9191 7.246 12.9191H4V16.7291H7.197V16.7281ZM16.689 16.6781C17.082 17.0741 17.672 17.2721 18.459 17.2721C19 17.2721 19.492 17.1241 19.885 16.8771C20.279 16.5801 20.525 16.2831 20.623 15.9861H23.033C22.639 17.1731 22.049 18.0141 21.263 18.5581C20.475 19.0531 19.541 19.3501 18.41 19.3501C17.6864 19.3523 16.9688 19.2179 16.295 18.9541C15.6887 18.7266 15.148 18.3529 14.721 17.8661C14.2643 17.4107 13.9267 16.8498 13.738 16.2331C13.492 15.5901 13.393 14.8981 13.393 14.1061C13.393 13.3641 13.492 12.6721 13.738 12.0281C13.9745 11.4082 14.3245 10.8378 14.77 10.3461C15.213 9.9011 15.754 9.5061 16.344 9.2581C17.0007 8.99416 17.7022 8.85969 18.41 8.8621C19.246 8.8621 19.984 9.0111 20.623 9.3571C21.263 9.7031 21.754 10.0991 22.148 10.6931C22.5499 11.2636 22.8494 11.8998 23.033 12.5731C23.131 13.2651 23.18 13.9581 23.131 14.7491H16C16 15.5411 16.295 16.2831 16.689 16.6791V16.6781ZM19.787 11.4841C19.443 11.1381 18.902 10.9401 18.262 10.9401C17.82 10.9401 17.475 11.0391 17.18 11.1871C16.885 11.3361 16.689 11.5341 16.492 11.7321C16.311 11.9234 16.1912 12.1643 16.148 12.4241C16.098 12.6721 16.049 12.8691 16.049 13.0671H20.475C20.377 12.3251 20.131 11.8311 19.787 11.4841V11.4841ZM15.459 6.2901H20.967V7.6261H15.46V6.2901H15.459Z"
+                      ></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_48_1508">
+                        <rect width="24" height="24" fill="white"></rect>
+                      </clipPath>
+                    </defs></svg
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+</div>
+
+    <script
+      src="/_next/static/chunks/webpack.js?v=1751686032573"
+      async=""
+    ></script>
+    <script>
+      (self.__next_f = self.__next_f || []).push([0]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        '3:"$Sreact.fragment"\n4:I["(app-pages-browser)/./node_modules/next/dist/client/components/layout-router.js",["app-pages-internals","static/chunks/app-pages-internals.js"],""]\n5:I["(app-pages-browser)/./node_modules/next/dist/client/components/render-from-template-context.js",["app-pages-internals","static/chunks/app-pages-internals.js"],""]\n9:I["(app-pages-browser)/./node_modules/next/dist/client/components/client-segment.js",["app-pages-internals","static/chunks/app-pages-internals.js"],"ClientSegmentRoot"]\na:I["(app-pages-browser)/./app/(site)/layout.tsx",["app/(site)/layout","static/chunks/app/(site)/layout.js"],"default"]\n10:I["(app-pages-browser)/./components/Hero/index.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n11:I["(app-pages-browser)/./components/Brands/index.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n12:I["(app-pages-browser)/./components/Features/index.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n13:I["(app-pages-browser)/./components/About/index.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n14:I["(app-pages-browser)/./components/FeaturesTab/index.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n15:I["(app-pages-browser)/./components/FunFact/index.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n16:I["(app-pages-browser)/./components/Integration/index.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n17:I["(app-pages-browser)/./components/CTA/index.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n18:I["(app-pages-browser)/./components/FAQ/index.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n19:I["(app-pages-browser)/./components/Testimonial/index.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n1a:I["(app-pages-browser)/./components/Pricing/index.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n1b:I["(app-pages-browser)/./components/Contact/index',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        '.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n1e:I["(app-pages-browser)/./node_modules/next/dist/lib/metadata/metadata-boundary.js",["app-pages-internals","static/chunks/app-pages-internals.js"],"OutletBoundary"]\n22:I["(app-pages-browser)/./node_modules/next/dist/client/components/error-boundary.js",["app-pages-internals","static/chunks/app-pages-internals.js"],""]\n23:I["(app-pages-browser)/./node_modules/next/dist/client/components/client-page.js",["app-pages-internals","static/chunks/app-pages-internals.js"],"ClientPageRoot"]\n24:I["(app-pages-browser)/./node_modules/next/dist/client/components/http-access-fallback/error-boundary.js",["app-pages-internals","static/chunks/app-pages-internals.js"],"HTTPAccessFallbackBoundary"]\n25:I["(app-pages-browser)/./node_modules/next/dist/lib/metadata/metadata-boundary.js",["app-pages-internals","static/chunks/app-pages-internals.js"],"MetadataBoundary"]\n26:I["(app-pages-browser)/./node_modules/next/dist/lib/metadata/metadata-boundary.js",["app-pages-internals","static/chunks/app-pages-internals.js"],"ViewportBoundary"]\n2f:I["(app-pages-browser)/./components/Common/SectionHeader.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n30:I["(app-pages-browser)/./components/Blog/BlogItem.tsx",["app/(site)/page","static/chunks/app/(site)/page.js"],"default"]\n:HL["/_next/static/css/app/(site)/layout.css?v=1751686032573","style"]\n:HL["/_next/static/css/app/(site)/page.css?v=1751686032573","style"]\n2:{"name":"Preloads","env":"Server","key":null,"owner":null,"props":{"preloadCallbacks":["$E(()=\u003e{ctx.componentMod.preloadStyle(fullHref,ctx.renderOpts.crossOrigin,ctx.nonce)})","$E(()=\u003e{ctx.componentMod.preloadStyle(fullHref,ctx.renderOpts.crossOrigin,ctx.nonce)})"]}}\n1:D"$2"\n1:null\n7:{"name":"NotFound","env":"Server","key":null,"owner":null,"props":{}}\n6:D"$7"\n8:{"name":"HTTPAccessErrorFallback","env":"Server","key":null,"owner":"$7","props":{"status":404,"message":"This page could not be found."}}\n6:D"$8"\n6:[["$","title",null,{"children":"404: ',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        'This page could not be found."},"$8"],["$","div",null,{"style":{"fontFamily":"system-ui,\\"Segoe UI\\",Roboto,Helvetica,Arial,sans-serif,\\"Apple Color Emoji\\",\\"Segoe UI Emoji\\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}},"$8"],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404},"$8"],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."},"$8"]},"$8"]]},"$8"]},"$8"]]\nc:{"name":"NotFound","env":"Server","key":null,"owner":null,"props":{}}\nb:D"$c"\nd:{"name":"HTTPAccessErrorFallback","env":"Server","key":null,"owner":"$c","props":{"status":404,"message":"This page could not be found."}}\nb:D"$d"\nb:[["$","title",null,{"children":"404: This page could not be found."},"$d"],["$","div",null,{"style":"$6:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}},"$d"],["$","h1",null,{"className":"next-error-h1","style":"$6:1:props:children:props:children:1:props:style","children":404},"$d"],["$","div",null,{"style":"$6:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$6:1:props:children:props:children:2:props:children:props:',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        'style","children":"This page could not be found."},"$d"]},"$d"]]},"$d"]},"$d"]]\nf:{"name":"Home","env":"Server","key":null,"owner":null,"props":{"params":"$@","searchParams":"$@"}}\ne:D"$f"\n1d:{"name":"Blog","env":"Server","key":null,"owner":"$f","props":{}}\n1c:D"$1d"\ne:["$","main",null,{"children":[["$","$L10",null,{},"$f"],["$","$L11",null,{},"$f"],["$","$L12",null,{},"$f"],["$","$L13",null,{},"$f"],["$","$L14",null,{},"$f"],["$","$L15",null,{},"$f"],["$","$L16",null,{},"$f"],["$","$L17",null,{},"$f"],["$","$L18",null,{},"$f"],["$","$L19",null,{},"$f"],["$","$L1a",null,{},"$f"],["$","$L1b",null,{},"$f"],"$L1c"]},"$f"]\n20:{"name":"__next_outlet_boundary__","env":"Server","key":null,"owner":null,"props":{"ready":"$E(async function getMetadataAndViewportReady() {\\n        await viewport();\\n        await metadata();\\n        return undefined;\\n    })"}}\n1f:D"$20"\n',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        '27:{"name":"NonIndex","env":"Server","key":null,"owner":null,"props":{"ctx":{"componentMod":{"GlobalError":"$22","__next_app__":{"require":"$E(function __webpack_require__(moduleId) {\\n/******/ \\t\\t// Check if module is in cache\\n/******/ \\t\\tvar cachedModule = __webpack_module_cache__[moduleId];\\n/******/ \\t\\tif (cachedModule !== undefined) {\\n/******/ \\t\\t\\treturn cachedModule.exports;\\n/******/ \\t\\t}\\n/******/ \\t\\t// Create a new module (and put it into the cache)\\n/******/ \\t\\tvar module = __webpack_module_cache__[moduleId] = {\\n/******/ \\t\\t\\tid: moduleId,\\n/******/ \\t\\t\\tloaded: false,\\n/******/ \\t\\t\\texports: {}\\n/******/ \\t\\t};\\n/******/ \\t\\n/******/ \\t\\t// Execute the module function\\n/******/ \\t\\tvar threw = true;\\n/******/ \\t\\ttry {\\n/******/ \\t\\t\\t__webpack_modules__[moduleId](module, module.exports, __webpack_require__);\\n/******/ \\t\\t\\tthrew = false;\\n/******/ \\t\\t} finally {\\n/******/ \\t\\t\\tif(threw) delete __webpack_module_cache__[moduleId];\\n/******/ \\t\\t}\\n/******/ \\t\\n/******/ \\t\\t// Flag the module as loaded\\n/******/ \\t\\tmodule.loaded = true;\\n/******/ \\t\\n/******/ \\t\\t// Return the exports of the module\\n/******/ \\t\\treturn module.exports;\\n/******/ \\t})","loadChunk":"$E(() =\u003e Promise.resolve())"},"pages":["D:\\\\Cybersoft\\\\Front_End\\\\capston\\\\solid-template\\\\app\\\\(site)\\\\page.tsx"],"routeModule":{"userland":{"loaderTree":["",{"children":"$Y"},"$Y"]},"definition":"$Y"},"tree":"$Y","ClientPageRoot":"$23","ClientSegmentRoot":"$9","HTTPAccessFallbackBoundary":"$24","LayoutRouter":"$4","MetadataBoundary":"$25","OutletBoundary":"$1e","Postpone":"$E(function Postpone({ reason, route }) {\\n    const prerenderStore = _workunitasyncstorageexternal.workUnitAsyncStorage.getStore();\\n    const dynamicTracking = prerenderStore \u0026\u0026 prerenderStore.type === \'prerender-ppr\' ? prerenderStore.dynamicTracking : null;\\n    postponeWithTracking(route, reason, dynamicTracking);\\n})","RenderFromTemplateContext":"$5","ViewportBoundary":"$26","actionAsyncStorage":"$Y","collectSegmentData":"$E(async function collectSegmentData(fullPageDataBuffer, staleTime, clientModules, serverConsumerManifest) {\\n    // Traverse the router tree and generate a prefetch response for each segment.\\n    // A mutable map to collect the results as we traverse the route tree.\\n    const resultMap = new Map();\\n    // Before we start, warm up the module cache by decoding the page data once.\\n    // Then we can assume that any remaining async tasks that occur the next time\\n    // are due to hanging promises caused by dynamic data access. Note we only\\n    // have to do this once per page, not per individual segment.\\n    //\\n    try {\\n        await (0, _clientedge.createFromReadableStream)((0, _nodewebstreamshelper.streamFromBuffer)(fullPageDataBuffer), {\\n            serverConsumerManifest\\n        });\\n        await (0, _scheduler.waitAtLeastOneReactRenderTask)();\\n    } catch  {}\\n    // Create an abort controller that we\'ll use to stop the stream.\\n    const abortController = new AbortController();\\n    const onCompletedProcessingRouteTree = async ()=\u003e{\\n        // Since all we\'re doing is decoding and re-encoding a cached prerender, if\\n        // serializing the stream takes longer than a microtask, it must because of\\n        // hanging promises caused by dynamic data.\\n        await (0, _scheduler.waitAtLeastOneReactRenderTask)();\\n        abortController.abort();\\n    };\\n    // Generate a stream for the route tree prefetch. While we\'re walking the\\n    // tree, we\'ll also spawn additional tasks to generate the segment prefetches.\\n    // The promises for these tasks are pushed to a mutable array that we will\\n    // await once the route tree is fully rendered.\\n    const segmentTasks = [];\\n    const { prelude: treeStream } = await (0, _staticedge.prerender)(// RootTreePrefetch is not a valid return type for a React component, but\\n    // we need to use a component so that when we decode the original stream\\n    // inside of it, the side effects are transferred to the new stream.\\n    // @ts-expect-error\\n    /*#__PURE__*/ (0, _jsxruntime.jsx)(PrefetchTreeData, {\\n        fullPageDataBuffer: fullPageDataBuffer,\\n        serverConsumerManifest: serverConsumerManifest,\\n        clientModules: clientModules,\\n        staleTime: staleTime,\\n        segmentTasks: segmentTasks,\\n        onCompletedProcessingRouteTree: onCompletedProcessingRouteTree\\n    }), clientModules, {\\n        signal: abortController.signal,\\n        onError () {\\n        // Ignore any errors. These would have already been reported when\\n        // we created the full page data.\\n        }\\n    });\\n    // Write the route tree to a special `/_tree` segment.\\n    const treeBuffer = await (0, _nodewebstreamshelper.streamToBuffer)(treeStream);\\n    resultMap.set(\'/_tree\', treeBuffer);\\n    // Now that we\'ve finished rendering the route tree, all the segment tasks\\n    // should have been spawned. Await them in parallel and write the segment\\n    // prefetches to the result map.\\n    for (const [segmentPath, buffer] of (await Promise.all(segmentTasks))){\\n        resultMap.set(segmentPath, buffer);\\n    }\\n    return resultMap;\\n})","createMetadataComponents":"$E(function createMetadataComponents({ tree, searchParams, metadataContext, getDynamicParamFromSegment, appUsingSizeAdjustment, errorType, createServerParamsForMetadata, workStore, MetadataBoundary, ViewportBoundary }) {\\n    function MetadataRoot() {\\n        return /*#__PURE__*/ (0, _jsxruntime.jsxs)(_jsxruntime.Fragment, {\\n            children: [\\n                /*#__PURE__*/ (0, _jsxruntime.jsx)(MetadataBoundary, {\\n                    children: /*#__PURE__*/ (0, _jsxruntime.jsx)(Metadata, {})\\n                }),\\n                /*#__PURE__*/ (0, _jsxruntime.jsx)(ViewportBoundary, {\\n                    children: /*#__PURE__*/ (0, _jsxruntime.jsx)(Viewport, {})\\n                }),\\n                appUsingSizeAdjustment ? /*#__PURE__*/ (0, _jsxruntime.jsx)(\\"meta\\", {\\n                    name: \\"next-size-adjust\\",\\n                    content: \\"\\"\\n                }) : null\\n            ]\\n        });\\n    }\\n    async function viewport() {\\n        return getResolvedViewport(tree, searchParams, getDynamicParamFromSegment, createServerParamsForMetadata, workStore, errorType);\\n    }\\n    async function Viewport() {\\n        try {\\n            return await viewport();\\n        } catch (error) {\\n            if (!errorType \u0026\u0026 (0, _httpaccessfallback.isHTTPAccessFallbackError)(error)) {\\n                try {\\n                    return await getNotFoundViewport(tree, searchParams, getDynamicParamFromSegment, createServerParamsForMetadata, workStore);\\n                } catch  {}\\n            }\\n            // We don\'t actually want to error in this component. We will\\n            // also error in the MetadataOutlet which causes the error to\\n            // bubble from the right position in the page to be caught by the\\n            // appropriate boundaries\\n            return null;\\n        }\\n    }\\n    Viewport.displayName = _metadataconstants.VIEWPORT_BOUNDARY_NAME;\\n    async function metadata() {\\n        return getResolvedMetadata(tree, searchParams, getDynamicParamFromSegment, metadataContext, createServerParamsForMetadata, workStore, errorType);\\n    }\\n    async function Metadata() {\\n        try {\\n            return await metadata();\\n        } catch (error) {\\n            if (!errorType \u0026\u0026 (0, _httpaccessfallback.isHTTPAccessFallbackError)(error)) {\\n                try {\\n                    return await getNotFoundMetadata(tree, searchParams, getDynamicParamFromSegment, metadataContext, createServerParamsForMetadata, workStore);\\n                } catch  {}\\n            }\\n            // We don\'t actually want to error in this component. We will\\n            // also error in the MetadataOutlet which causes the error to\\n            // bubble from the right position in the page to be caught by the\\n            // appropriate boundaries\\n            return null;\\n        }\\n    }\\n    Metadata.displayName = _metadataconstants.METADATA_BOUNDARY_NAME;\\n    async function getMetadataAndViewportReady() {\\n        await viewport();\\n        await metadata();\\n        return undefined;\\n    }\\n    return [\\n        MetadataRoot,\\n        getMetadataAndViewportReady\\n    ];\\n})","createPrerenderParamsForClientSegment":"$E(function createPrerenderParamsForClientSegment(underlyingParams, workStore) {\\n    const prerenderStore = _workunitasyncstorageexternal.workUnitAsyncStorage.getStore();\\n    if (prerenderStore \u0026\u0026 prerenderStore.type === \'prerender\') {\\n        const fallbackParams = workStore.fallbackRouteParams;\\n        if (fallbackParams) {\\n            for(let key in underlyingParams){\\n                if (fallbackParams.has(key)) {\\n                    // This params object has one of more fallback params so we need to consider\\n                    // the awaiting of this params object \\"dynamic\\". Since we are in dynamicIO mode\\n                    // we encode this as a promise that never resolves\\n                    return (0, _dynamicrenderingutils.makeHangingPromise)(prerenderStore.renderSignal, \'`params`\');\\n                }\\n            }\\n        }\\n    }\\n    // We\'re prerendering in a mode that does not abort. We resolve the promise without\\n    // any tracking because we\'re just transporting a value from server to client where the tracking\\n    // will be applied.\\n    return Promise.resolve(underlyingParams);\\n})","createPrerenderSearchParamsForClientPage":"$E(function createPrerenderSearchParamsForClientPage(workStore) {\\n    if (workStore.forceStatic) {\\n        // When using forceStatic we override all other logic and always just return an empty\\n        // dictionary object.\\n        return Promise.resolve({});\\n    }\\n    const prerenderStore = _workunitasyncstorageexternal.workUnitAsyncStorage.getStore();\\n    if (prerenderStore \u0026\u0026 prerenderStore.type === \'prerender\') {\\n        // dynamicIO Prerender\\n        // We\'re prerendering in a mode that aborts (dynamicIO) and should stall\\n        // the promise to ensure the RSC side is considered dynamic\\n        return (0, _dynamicrenderingutils.makeHangingPromise)(prerenderStore.renderSignal, \'`searchParams`\');\\n    }\\n    // We\'re prerendering in a mode that does not aborts. We resolve the promise without\\n    // any tracking because we\'re just transporting a value from server to client where the tracking\\n    // will be applied.\\n    return Promise.resolve({});\\n})","createServerParamsForMetadata":"$E(function createServerParamsForServerSegment(underlyingParams, workStore) {\\n    const workUnitStore = _workunitasyncstorageexternal.workUnitAsyncStorage.getStore();\\n    if (workUnitStore) {\\n        switch(workUnitStore.type){\\n            case \'prerender\':\\n            case \'prerender-ppr\':\\n            case \'prerender-legacy\':\\n                return createPrerenderParams(underlyingParams, workStore, workUnitStore);\\n            default:\\n        }\\n    }\\n    return createRenderParams(underlyingParams, workStore);\\n})","createServerParamsForServerSegment":"$E(function createServerParamsForServerSegment(underlyingParams, workStore) {\\n    const workUnitStore = _workunitasyncstorageexternal.workUnitAsyncStorage.getStore();\\n    if (workUnitStore) {\\n        switch(workUnitStore.type){\\n            case \'prerender\':\\n            case \'prerender-ppr\':\\n            case \'prerender-legacy\':\\n                return createPrerenderParams(underlyingParams, workStore, workUnitStore);\\n            default:\\n        }\\n    }\\n    return createRenderParams(underlyingParams, workStore);\\n})","createServerSearchParamsForMetadata":"$E(function createServerSearchParamsForServerPage(underlyingSearchParams, workStore) {\\n    const workUnitStore = _workunitasyncstorageexternal.workUnitAsyncStorage.getStore();\\n    if (workUnitStore) {\\n        switch(workUnitStore.type){\\n            case \'prerender\':\\n            case \'prerender-ppr\':\\n            case \'prerender-legacy\':\\n                return createPrerenderSearchParams(workStore, workUnitStore);\\n            default:\\n        }\\n    }\\n    return createRenderSearchParams(underlyingSearchParams, workStore);\\n})","createServerSearchParamsForServerPage":"$E(function createServerSearchParamsForServerPage(underlyingSearchParams, workStore) {\\n    const workUnitStore = _workunitasyncstorageexternal.workUnitAsyncStorage.getStore();\\n    if (workUnitStore) {\\n        switch(workUnitStore.type){\\n            case \'prerender\':\\n            case \'prerender-ppr\':\\n            case \'prerender-legacy\':\\n                return createPrerenderSearchParams(workStore, workUnitStore);\\n            default:\\n        }\\n    }\\n    return createRenderSearchParams(underlyingSearchParams, workStore);\\n})","createTemporaryReferenceSet":"$E(function(){return new WeakMap})","decodeAction":"$E(function(body,serverManifest){var formData=new FormData,action=null;return body.forEach(function(value1,key){key.startsWith(\\"$ACTION_\\")?key.startsWith(\\"$ACTION_REF_\\")?(value1=decodeBoundActionMetaData(body,serverManifest,value1=\\"$ACTION_\\"+key.slice(12)+\\":\\"),action=loadServerReference(serverManifest,value1.id,value1.bound)):key.startsWith(\\"$ACTION_ID_\\")\u0026\u0026(action=loadServerReference(serverManifest,value1=key.slice(11),null)):formData.append(key,value1)}),null===action?null:action.then(function(fn){return fn.bind(null,formData)})})","decodeFormState":"$E(function(actionResult,body,serverManifest){var keyPath=body.get(\\"$ACTION_KEY\\");if(\\"string\\"!=typeof keyPath)return Promise.resolve(null);var metaData=null;if(body.forEach(function(value1,key){key.startsWith(\\"$ACTION_REF_\\")\u0026\u0026(metaData=decodeBoundActionMetaData(body,serverManifest,\\"$ACTION_\\"+key.slice(12)+\\":\\"))}),null===metaData)return Promise.resolve(null);var referenceId=metaData.id;return Promise.resolve(metaData.bound).then(function(bound){return null===bound?null:[actionResult,keyPath,referenceId,bound.length-1]})})","decodeReply":"$E(function(body,webpackMap,options){if(\\"string\\"==typeof body){var form=new FormData;form.append(\\"0\\",body),body=form}return webpackMap=getChunk(body=createResponse(webpackMap,\\"\\",options?options.temporaryReferences:void 0,body),0),close(body),webpackMap})","patchFetch":"$E(function patchFetch() {\\n    return (0, _patchfetch.patchFetch)({\\n        workAsyncStorage: _workasyncstorageexternal.workAsyncStorage,\\n        workUnitAsyncStorage: _workunitasyncstorageexternal.workUnitAsyncStorage\\n    });\\n})","preconnect":"$E(function preconnect(href, crossOrigin, nonce) {\\n    const opts = {};\\n    if (typeof crossOrigin === \'string\') {\\n        opts.crossOrigin = crossOrigin;\\n    }\\n    if (typeof nonce === \'string\') {\\n        opts.nonce = nonce;\\n    }\\n    ;\\n    _reactdom.default.preconnect(href, opts);\\n})","preloadFont":"$E(function preloadFont(href, type, crossOrigin, nonce) {\\n    const opts = {\\n        as: \'font\',\\n        type\\n    };\\n    if (typeof crossOrigin === \'string\') {\\n        opts.crossOrigin = crossOrigin;\\n    }\\n    if (typeof nonce === \'string\') {\\n        opts.nonce = nonce;\\n    }\\n    _reactdom.default.preload(href, opts);\\n})","preloadStyle":"$E(function preloadStyle(href, crossOrigin, nonce) {\\n    const opts = {\\n        as: \'style\'\\n    };\\n    if (typeof crossOrigin === \'string\') {\\n        opts.crossOrigin = crossOrigin;\\n    }\\n    if (typeof nonce === \'string\') {\\n        opts.nonce = nonce;\\n    }\\n    _reactdom.default.preload(href, opts);\\n})","prerender":"$undefined","renderToReadableStream":"$E(function(model,webpackMap,options){var request=new RequestInstance(20,model,webpackMap,options?options.onError:void 0,options?options.identifierPrefix:void 0,options?options.onPostpone:void 0,options?options.temporaryReferences:void 0,options?options.environmentName:void 0,options?options.filterStackFrame:void 0,noop,noop);if(options\u0026\u0026options.signal){var signal=options.signal;if(signal.aborted)abort(request,signal.reason);else{var listener=function(){abort(request,signal.reason),signal.removeEventListener(\\"abort\\",listener)};signal.addEventListener(\\"abort\\",listener)}}return new ReadableStream({type:\\"bytes\\",start:function(){request.flushScheduled=null!==request.destination,supportsRequestStorage?scheduleMicrotask(function(){requestStorage.run(request,performWork,request)}):scheduleMicrotask(function(){return performWork(request)}),setTimeoutOrImmediate(function(){request.status===OPENING\u0026\u0026(request.status=11)},0)},pull:function(controller){if(request.status===CLOSING)request.status=CLOSED,closeWithError(controller,request.fatalError);else if(request.status!==CLOSED\u0026\u0026null===request.destination){request.destination=controller;try{flushCompletedChunks(request,controller)}catch(error){logRecoverableError(request,error,null),fatalError(request,error)}}},cancel:function(reason){request.destination=null,abort(request,reason)}},{highWaterMark:0})})","serverHooks":"$Y","taintObjectReference":"$E(function notImplemented() {\\n    throw new Error(\'Taint can only be used with the taint flag.\');\\n})","workAsyncStorage":"$Y","workUnitAsyncStorage":"$Y"},"url":"$Y","renderOpts":"$Y","workStore":"$Y","parsedRequestHeaders":"$Y","getDynamicParamFromSegment":"$E(function(segment){let segmentParam=getSegmentParam(segment);if(!segmentParam)return null;let key=segmentParam.param,value1=params[key];if(fallbackRouteParams\u0026\u0026fallbackRouteParams.has(segmentParam.param)?value1=fallbackRouteParams.get(segmentParam.param):Array.isArray(value1)?value1=value1.map(i=\u003eencodeURIComponent(i)):\\"string\\"==typeof value1\u0026\u0026(value1=encodeURIComponent(value1)),!value1){let isCatchall=\\"catchall\\"===segmentParam.type,isOptionalCatchall=\\"optional-catchall\\"===segmentParam.type;if(isCatchall||isOptionalCatchall){let dynamicParamType=dynamicParamTypes[segmentParam.type];return isOptionalCatchall?{param:key,value:null,type:dynamicParamType,treeSegment:[key,\\"\\",dynamicParamType]}:{param:key,value:value1=pagePath.split(\\"/\\").slice(1).flatMap(pathSegment=\u003e{let param=function(param){let match=param.match(PARAMETER_PATTERN);return match?parseMatchedParameter(match[1]):parseMatchedParameter(param)}(pathSegment);return params[param.key]??param.key}),type:dynamicParamType,treeSegment:[key,value1.join(\\"/\\"),dynamicParamType]}}}let type=function(type){let short=dynamicParamTypes[type];if(!short)throw Error(\\"Unknown dynamic param type\\");return short}(segmentParam.type);return{param:key,value:value1,treeSegment:[key,Array.isArray(value1)?value1.join(\\"/\\"):value1,type],type:type}})","query":"$Y","isPrefetch":false,"isAction":false,"requestTimestamp":1751686032573,"appUsingSizeAdjustment":false,"flightRouterState":"$undefined","requestId":"j6Qt-g8YRfCiXef44SYCZ","pagePath":"/","clientReferenceManifest":"$Y","assetPrefix":"","isNotFoundPath":false,"nonce":"$undefined","res":"$Y"}}}\n',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        '21:D"$27"\n21:null\n29:{"name":"MetadataRoot","env":"Server","key":"j6Qt-g8YRfCiXef44SYCZ","owner":null,"props":{}}\n28:D"$29"\n2b:{"name":"__next_metadata_boundary__","env":"Server","key":null,"owner":"$29","props":{}}\n2a:D"$2b"\n2d:{"name":"__next_viewport_boundary__","env":"Server","key":null,"owner":"$29","props":{}}\n2c:D"$2d"\n28:["$","$3","j6Qt-g8YRfCiXef44SYCZ",{"children":[["$","$L25",null,{"children":"$L2a"},"$29"],["$","$L26",null,{"children":"$L2c"},"$29"],null]},null]\n2e:[]\n0:{"P":"$1","b":"development","p":"","c":["",""],"i":false,"f":[[["",{"children":["(site)",{"children":["__PAGE__",{}]},"$undefined","$undefined",true]}],["",["$","$3","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{},null],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[],"$6"],"forbidden":"$undefined","unauthorized":"$undefined"},null]]},null],{"children":["(site)",["$","$3","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/app/(site)/layout.css?v=1751686032573","precedence":"next_static/css/app/(site)/layout.css","crossOrigin":"$undefined","nonce":"$undefined"},null]],["$","$L9",null,{"Component":"$a","slots":{"children":["$","$L4",null,{"parallelRouterKey":"children","segmentPath":["children","(site)","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{},null],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[],"$b"],"forbidden":"$undefined","unauthorized":"$undefined"},null]},"params":{}},null]]},null],{"children":["__PAGE__",["$","$3","c",{"children":["$e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/app/(site)/page.css?v=1751686032573","precedence":"next_static/css/app/(site)/page.css","crossOrigin":"$undefined","nonce":"$undefined"},null]],["$","$L1e",null,{"children":"$L1f"},null]]},null],{},null,false]},null,false]},nu',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        'll,false],["$","$3","h",{"children":["$21","$28"]},null],false]],"m":"$W2e","G":["$22","$undefined"],"s":false,"S":false}\n1c:["$","section",null,{"className":"py-20 lg:py-25 xl:py-30","children":[["$","div",null,{"className":"mx-auto max-w-c-1315 px-4 md:px-8 xl:px-0","children":["$","div",null,{"className":"animate_top mx-auto text-center","children":["$","$L2f",null,{"headerInfo":{"title":"NEWS \u0026 BLOGS","subtitle":"Latest News \u0026 Blogs","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in maximus."}},"$1d"]},"$1d"]},"$1d"],["$","div",null,{"className":"mx-auto mt-15 max-w-c-1280 px-4 md:px-8 xl:mt-20 xl:px-0","children":["$","div",null,{"className":"grid grid-cols-1 gap-7.5 md:grid-cols-2 lg:grid-cols-3 xl:gap-10","children":[["$","$L30","0",{"blog":{"_id":1,"mainImage":"/images/blog/blog-01.png","title":"Free advertising for your online business","metadata":"Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor."}},"$1d"],["$","$L30","1",{"blog":{"_id":2,"mainImage":"/images/blog/blog-02.png","title":"9 simple ways to improve your design skills","metadata":"Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor."}},"$1d"],["$","$L30","2",{"blog":{"_id":2,"mainImage":"/images/blog/blog-03.png","title":"Tips to quickly improve your coding speed.","metadata":"Lorem ipsum dolor sit amet, consectetur adipiscing elit convallis tortor."}},"$1d"]]},"$1d"]},"$1d"]]},"$1d"]\n',
+      ]);
+    </script>
+    <script>
+      self.__next_f.push([
+        1,
+        '2c:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"},"$20"]]\n2a:[["$","meta","0",{"charSet":"utf-8"},"$2b"],["$","title","1",{"children":"Next.js Starter Template for SaaS Startups - Solid SaaS Boilerplate"},"$2b"],["$","meta","2",{"name":"description","content":"This is Home for Solid Pro"},"$2b"],["$","link","3",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"},"$2b"]]\n1f:null\n',
+      ]);
+    </script>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                const observer = new IntersectionObserver(
+                  (entries) => {
+                    entries.forEach((entry) => {
+                      if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                        entry.target.style.transition = "all 0.6s ease-out";
+                        observer.unobserve(entry.target);
+                      }
+                    });
+                  },
+                  {
+                    threshold: 0.1,
+                  }
+                );
+
+                document.querySelectorAll(".animate_top").forEach((el) => {
+                  observer.observe(el);
+                });
+              });
+            </script>
+          </body>
+        </html>
+      </body>
+    </html>
+  </body>
+</html>
